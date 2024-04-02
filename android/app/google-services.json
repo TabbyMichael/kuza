@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "5993279988",
+    "project_id": "kuza-99aba",
+    "storage_bucket": "kuza-99aba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5993279988:android:b631619a735132a50cc9a1",
+        "android_client_info": {
+          "package_name": "com.example.kuza"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJHQvrfDXUYvnR5wnkPswd2cmiRl8ylxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
