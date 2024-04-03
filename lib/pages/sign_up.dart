@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:kuza/pages/auth_page.dart';
 import 'package:kuza/pages/components/my_button.dart';
 import 'package:kuza/pages/components/my_textfield.dart';
 import 'package:kuza/pages/components/normal_tf.dart';
@@ -29,14 +28,20 @@ class SignUpPage extends StatelessWidget {
       // Send email verification
       await userCredential.user!.sendEmailVerification();
 
-      // Navigate to the verification page
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) =>
-              VerificationPage(email: userCredential.user!.email!),
+      // Display a message to the user informing them to check their email
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'An email has been sent to ${userCredential.user!.email} for verification. Please check your inbox.',
+          ),
+          duration: Duration(seconds: 5),
         ),
       );
+
+      // Pop to the login page after the message is shown
+      Future.delayed(Duration(seconds: 5), () {
+        Navigator.of(context).popUntil(ModalRoute.withName('/login'));
+      });
 
       Navigator.of(context, rootNavigator: true).pop();
     } on FirebaseAuthException catch (e) {
