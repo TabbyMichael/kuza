@@ -36,24 +36,24 @@ class _ExpenseChartState extends State<ExpenseChart> {
               ),
             ),
           ],
-          // titlesData: FlTitlesData(
-          //   topTitles: const AxisTitles(
-          //     drawBehindEverything: true,
-          //   ),
-          //   leftTitles: const AxisTitles(
-          //     drawBehindEverything: true,
-          //   ),
-          //   rightTitles: const AxisTitles(
-          //     drawBehindEverything: true,
-          //   ),
-          //   bottomTitles: AxisTitles(
-          //     sideTitles: SideTitles(
-          //       showTitles: true,
-          //       getTitlesWidget: (value, _) =>
-          //           Text(DateFormat.E().format(list[value.toInt()]['day'])),
-          //     ),
-          //   ),
-          // ),
+          titlesData: FlTitlesData(
+            topTitles: AxisTitles(
+              drawBehindEverything: true,
+            ),
+            leftTitles: AxisTitles(
+              drawBehindEverything: true,
+            ),
+            rightTitles: AxisTitles(
+              drawBehindEverything: true,
+            ),
+            bottomTitles: AxisTitles(
+              sideTitles: SideTitles(
+                showTitles: true,
+                getTitlesWidget: (value, _) =>
+                    Text(DateFormat.E().format(list[value.toInt()]['day'])),
+              ),
+            ),
+          ),
         ),
       );
     });

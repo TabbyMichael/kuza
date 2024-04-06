@@ -15,22 +15,16 @@ class CategoryFetcher extends StatefulWidget {
 class _CategoryFetcherState extends State<CategoryFetcher> {
   late Future _categoryList;
 
-  // Future _getCategoryList() async {
-  //   final provider = Provider.of<DatabaseProvider>(context, listen: false);
-  //   return await provider.fetchCategories();
-  // }
+  Future _getCategoryList() async {
+    final provider = Provider.of<DatabaseProvider>(context, listen: false);
+    return await provider.fetchCategories();
+  }
 
   @override
   void initState() {
     super.initState();
     // fetch the list and set it to _categoryList
     _categoryList = _getCategoryList();
-  }
-
-  Future _getCategoryList() async {
-    final provider =
-        context.read<DatabaseProvider>(); // Access provider using context.read
-    return await provider.fetchCategories();
   }
 
   @override

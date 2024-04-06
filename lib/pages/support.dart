@@ -29,7 +29,7 @@ class _SupportState extends State<Support> {
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => const HomePage(),
+              builder: (context) => HomePage(),
             ));
           },
           child: const Icon(Icons.arrow_back),
