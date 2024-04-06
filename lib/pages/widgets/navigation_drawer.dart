@@ -129,7 +129,7 @@ class NavigationDrawerWidget extends StatelessWidget {
                       Navigator.of(context).pop(); // Close the drawer
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) =>
-                            const HomePage(), // Navigate to the HomePage
+                            HomePage(), // Navigate to the HomePage
                       ));
                     },
                   ),
@@ -191,7 +191,8 @@ class NavigationDrawerWidget extends StatelessWidget {
                     onClicked: () {
                       Navigator.of(context).pop(); // Close the drawer
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const FAQ(), // Navigate to the HomePage
+                        builder: (context) =>
+                            const FAQ(), // Navigate to the HomePage
                       ));
                     },
                   ),

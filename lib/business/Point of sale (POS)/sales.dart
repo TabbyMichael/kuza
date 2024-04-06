@@ -28,8 +28,7 @@ class Sales extends StatelessWidget {
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) =>
-                  const HomePage(), // Navigate to the HomePage
+              builder: (context) => HomePage(), // Navigate to the HomePage
             ));
           },
           child: const Icon(

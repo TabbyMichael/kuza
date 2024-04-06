@@ -15,11 +15,11 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => CartModel()),
         // Add your DatabaseProvider here
-        Provider<DatabaseProvider>(
-          create: (_) => DatabaseProvider(),
-          dispose: (_, dbProvider) => dbProvider.dispose(),
-        ),
+        ChangeNotifierProvider(create: (context) => DatabaseProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -38,10 +35,9 @@ class MyApp extends StatelessWidget {
         initialRoute: '/splash',
         routes: {
           '/splash': (context) => const SplashScreen(),
-          '/HomePage': (context) => const HomePage(),
+          '/HomePage': (context) => HomePage(),
           '/login': (context) => LoginPage(),
           '/signUp': (context) => SignUpPage(),
-          // '/invent': (context) => InventoryPage(),
           '/password': (context) => ForgotPassword(),
           '/success': (context) => const SuccessfulPassword(),
           '/verify': (context) => const VerificationPage(),
