@@ -38,9 +38,9 @@ class SignUpPage extends StatelessWidget {
         ),
       );
 
-      // Pop to the login page after the message is shown
+      // Navigate back to the login page after the message is shown
       Future.delayed(Duration(seconds: 5), () {
-        Navigator.of(context).popUntil(ModalRoute.withName('/login'));
+        Navigator.of(context).pushReplacementNamed('/login');
       });
 
       Navigator.of(context, rootNavigator: true).pop();
