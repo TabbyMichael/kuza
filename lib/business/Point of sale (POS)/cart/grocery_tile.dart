@@ -41,7 +41,7 @@ class GroceryItemTile extends StatelessWidget {
             // item name
             Text(
               itemName,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
               ),
             ),
@@ -51,8 +51,8 @@ class GroceryItemTile extends StatelessWidget {
               color: color,
               child: Text(
                 '\$' + itemPrice,
-                style: TextStyle(
-                  color: Colors.white,
+                style: const TextStyle(
+                  color: Colors.black,
                   fontWeight: FontWeight.bold,
                 ),
               ),
