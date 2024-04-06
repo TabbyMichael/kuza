@@ -56,7 +56,7 @@ class _CategoryFetcherState extends State<CategoryFetcher> {
                       ),
                       TextButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed(AllExpenses.name);
+                          Navigator.pushNamed(context, AllExpenses.name);
                         },
                         child: const Text('View All'),
                       ),

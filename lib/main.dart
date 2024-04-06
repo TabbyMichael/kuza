@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:kuza/business/Expenses/models/database_provider.dart';
+import 'package:kuza/business/Expenses/screens/all_expenses.dart';
 import 'package:kuza/business/Point%20of%20sale%20(POS)/cart_model.dart';
 import 'package:kuza/pages/brand_intro.dart';
 import 'package:kuza/pages/forgot_password.dart';
@@ -15,7 +16,7 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
           '/success': (context) => const SuccessfulPassword(),
           '/verify': (context) => const VerificationPage(),
           '/brandintro': (context) => const BrandIntroPage(),
+          '/all_expenses': (context) => AllExpenses(),
         },
       ),
     );
