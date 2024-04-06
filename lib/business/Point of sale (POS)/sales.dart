@@ -39,16 +39,20 @@ class Sales extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.black,
+        backgroundColor: Colors.white,
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(
             builder: (context) {
-              return CartPage();
+              return const CartPage();
             },
           ),
         ),
-        child: const Icon(Icons.shopping_bag),
+        child: const Icon(
+          Icons.shopping_bag,
+          color: Colors.lightBlueAccent,
+          size: 28,
+        ),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,29 +61,34 @@ class Sales extends StatelessWidget {
           // good morning bro
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: Text('Good morning,'),
+            child: Text(
+              'Good Morning,',
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
           ),
           const SizedBox(height: 4),
           // Let's order fresh items for you
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Text(
-              "Let's order fresh items for you",
+              "Let's place your Order",
               style: TextStyle(
-                fontSize: 36,
+                fontSize: 25,
                 fontWeight: FontWeight.bold,
               ),
             ),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 10),
           const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Divider(),
           ),
           const SizedBox(height: 24),
           // categories -> horizontal listview
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
             child: Text(
               "Fresh Items",
               style: TextStyle(

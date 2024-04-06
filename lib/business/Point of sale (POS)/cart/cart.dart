@@ -23,11 +23,11 @@ class CartPage extends StatelessWidget {
             children: [
               // Let's order fresh items for you
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Text(
                   "My Cart",
                   style: GoogleFonts.notoSerif(
-                    fontSize: 36,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -39,7 +39,7 @@ class CartPage extends StatelessWidget {
                   padding: const EdgeInsets.all(12.0),
                   child: ListView.builder(
                     itemCount: value.cartItems.length,
-                    padding: EdgeInsets.all(12),
+                    padding: const EdgeInsets.all(12),
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: const EdgeInsets.all(12.0),
@@ -81,7 +81,7 @@ class CartPage extends StatelessWidget {
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
-                    color: Colors.green,
+                    color: Colors.lightBlueAccent,
                   ),
                   padding: const EdgeInsets.all(24),
                   child: Row(
@@ -90,9 +90,11 @@ class CartPage extends StatelessWidget {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
+                          const Text(
                             'Total Price',
-                            style: TextStyle(color: Colors.green[200]),
+                            style: TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
 
                           const SizedBox(height: 8),
@@ -111,15 +113,20 @@ class CartPage extends StatelessWidget {
                       // pay now
                       Container(
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.green.shade200),
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 241, 244, 246),
+                          ),
                           borderRadius: BorderRadius.circular(28),
                         ),
                         padding: const EdgeInsets.all(12),
-                        child: Row(
-                          children: const [
+                        child: const Row(
+                          children: [
                             Text(
                               'Pay Now',
-                              style: TextStyle(color: Colors.white),
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.white),
                             ),
                             Icon(
                               Icons.arrow_forward_ios,
