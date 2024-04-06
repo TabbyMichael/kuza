@@ -80,7 +80,7 @@ class Sales extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 10),
+          const SizedBox(height: 5),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.0),
             child: Divider(),
