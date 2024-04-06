@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kuza/business/Dashboard/reports.dart';
+import 'package:kuza/business/Expenses/screens/category_screen.dart';
 import 'package:kuza/business/customers.dart';
-import 'package:kuza/business/expenses.dart';
 import 'package:kuza/business/other_incomes.dart';
 import 'package:kuza/business/Inventory/products.dart';
 import 'package:kuza/business/Point%20of%20sale%20(POS)/sales.dart';
@@ -128,7 +128,7 @@ class _HomePageState extends State<HomePage> {
         break;
       case 'Expenses':
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Expenses()));
+            .push(MaterialPageRoute(builder: (context) => CategoryScreen()));
         break;
       case 'Stores':
         Navigator.of(context)

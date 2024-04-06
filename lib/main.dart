@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:kuza/business/Expenses/models/database_provider.dart';
 import 'package:kuza/business/Point%20of%20sale%20(POS)/cart_model.dart';
 import 'package:kuza/pages/brand_intro.dart';
 import 'package:kuza/pages/forgot_password.dart';
@@ -22,8 +23,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => CartModel(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => CartModel()),
+        // Add your DatabaseProvider here
+        Provider<DatabaseProvider>(
+          create: (_) => DatabaseProvider(),
+          dispose: (_, dbProvider) => dbProvider.dispose(),
+        ),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'MedFast',
