@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kuza/business/Expenses/models/database_provider.dart';
+import 'package:kuza/business/Expenses/widgets/expense_screen/expense_list.dart';
 import 'package:provider/provider.dart';
 import './expense_list.dart';
 import './expense_chart.dart';

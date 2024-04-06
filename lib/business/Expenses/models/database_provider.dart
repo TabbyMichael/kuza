@@ -48,6 +48,26 @@ class DatabaseProvider with ChangeNotifier {
     return _database!;
   }
 
+  Future<void> updateExpense(Expense updatedExpense) async {
+    final db = await database;
+    await db.transaction((txn) async {
+      await txn.update(
+        eTable, // expense table
+        updatedExpense.toMap(), // convert expense to map
+        where: 'id = ?', // update based on id
+        whereArgs: [updatedExpense.id], // id of the expense to update
+      ).then((_) {
+        // Update the expense in in-app memory
+        final index =
+            _expenses.indexWhere((expense) => expense.id == updatedExpense.id);
+        if (index != -1) {
+          _expenses[index] = updatedExpense;
+          notifyListeners();
+        }
+      });
+    });
+  }
+
   // _createDb function
   static const cTable = 'categoryTable';
   static const eTable = 'expenseTable';
