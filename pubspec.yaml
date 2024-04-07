@@ -82,6 +82,8 @@ flutter:
     - lib/assets/nick-fewings--LOEswy6V8k-unsplash.jpg
     - lib/assets/danique-tersmette-cGUTNCtBeEs-unsplash.jpg
     - lib/assets/markus-winkler-pOu_UmkOG-0-unsplash.jpg
+    - lib/assets/google.png
+    - lib/assets/apple.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

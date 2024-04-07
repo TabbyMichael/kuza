@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:kuza/pages/components/my_button.dart';
 import 'package:kuza/pages/components/my_textfield.dart';
 import 'package:kuza/pages/components/normal_tf.dart';
+import 'package:kuza/pages/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -23,7 +24,7 @@ class LoginPage extends StatelessWidget {
           context: context,
           barrierDismissible: false,
           builder: (BuildContext context) {
-            return Center(
+            return const Center(
               child: SizedBox(
                 width: 50,
                 height: 50,
@@ -37,7 +38,7 @@ class LoginPage extends StatelessWidget {
           context: context,
           barrierDismissible: false,
           builder: (BuildContext context) {
-            return Center(
+            return const Center(
               child: SizedBox(
                 width: 50,
                 height: 50,
@@ -70,7 +71,7 @@ class LoginPage extends StatelessWidget {
       }
       // Display error message using a SnackBar or showDialog
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Invalid email or password'),
           duration: Duration(seconds: 2),
         ),
@@ -176,13 +177,10 @@ class LoginPage extends StatelessWidget {
                     buttonText: "Login",
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 10),
 
-                  // google + apple sign in buttons
-
-                  // not a member register now
                   Padding(
-                    padding: const EdgeInsets.all(28.0),
+                    padding: const EdgeInsets.all(25.0),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -210,7 +208,66 @@ class LoginPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: Divider(
+                            thickness: 0.5,
+                            color: Colors.grey[400],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                          child: Text(
+                            'Or continue with',
+                            style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 16, // Adjust the font size here
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Divider(
+                            thickness: 0.5,
+                            color: Colors.grey[400],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(height: 20),
+                  // google + apple sign in buttons
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // google button
+                      Expanded(
+                        child: Container(
+                          width: 50, // Adjust width as needed
+                          height: 150, // Adjust height as needed
+                          child: const SquareTile(
+                              imagePath: 'lib/assets/google.png'),
+                        ),
+                      ),
+
+                      const SizedBox(width: 25),
+
+                      // apple button
+                      Expanded(
+                        child: Container(
+                          width: 50, // Adjust width as needed
+                          height: 150, // Adjust height as needed
+                          child: const SquareTile(
+                              imagePath: 'lib/assets/apple.png'),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
