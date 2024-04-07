@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:sqflite/sqlite_api.dart';
 import '../constants/icons.dart';
 import './ex_category.dart';
 import './expense.dart';

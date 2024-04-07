@@ -3,7 +3,7 @@ import '../widgets/category_screen/category_fetcher.dart';
 import '../widgets/expense_form.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({Key? key}) : super(key: key);
+  const CategoryScreen({super.key});
 
   static const name = '/category_screen'; // for routes
 

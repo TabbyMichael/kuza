@@ -5,9 +5,9 @@ import '../../models/expense.dart';
 
 class ConfirmBox extends StatelessWidget {
   const ConfirmBox({
-    Key? key,
+    super.key,
     required this.exp,
-  }) : super(key: key);
+  });
 
   final Expense exp;
 

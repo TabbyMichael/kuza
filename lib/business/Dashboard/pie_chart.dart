@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class PieChartSample2 extends StatefulWidget {
-  const PieChartSample2({Key? key}) : super(key: key);
+  const PieChartSample2({super.key});
 
   @override
   State<StatefulWidget> createState() => PieChart2State();
@@ -170,8 +170,8 @@ class Indicator extends StatelessWidget {
     required this.color,
     required this.text,
     this.isSquare = false,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
