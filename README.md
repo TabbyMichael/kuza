@@ -35,4 +35,4 @@ Facebook: KuzaApp
 LinkedIn: Kuza App
 Thank you for choosing Kuza App. Together, let's empower businesses across Africa for a brighter future.
 
-Feel free to customize and expand upon this draft to better suit your needs and target audience.
+
