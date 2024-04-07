@@ -6,7 +6,7 @@ import '../../screens/expense_screen.dart';
 class CategoryCard extends StatelessWidget {
   final ExpenseCategory category;
 
-  const CategoryCard(this.category, {Key? key}) : super(key: key);
+  const CategoryCard(this.category, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -3,10 +3,10 @@ import 'dart:io';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:kuza/pages/components/my_button.dart';
 import 'package:kuza/pages/components/my_textfield.dart';
 import 'package:kuza/pages/components/normal_tf.dart';
-import 'package:kuza/pages/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
@@ -76,6 +76,40 @@ class LoginPage extends StatelessWidget {
           duration: Duration(seconds: 2),
         ),
       );
+    }
+  }
+
+  Future<void> signInWithGoogle(BuildContext context) async {
+    try {
+      // Show loading indicator if necessary
+      // e.g., show a CircularProgressIndicator()
+
+      final GoogleSignIn googleSignIn = GoogleSignIn();
+      final GoogleSignInAccount? googleSignInAccount =
+          await googleSignIn.signIn();
+
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          accessToken: googleSignInAuthentication.accessToken,
+          idToken: googleSignInAuthentication.idToken,
+        );
+        final UserCredential authResult =
+            await FirebaseAuth.instance.signInWithCredential(credential);
+        final User? user = authResult.user;
+
+        // Navigate to the next screen after successful sign-in
+        Navigator.of(context).pushReplacementNamed('/HomePage');
+      } else {
+        // Handle sign-in failure
+        // e.g., display an error message
+      }
+
+      // Dismiss loading indicator if necessary
+    } catch (error) {
+      // Handle errors
+      print('Error signing in with Google: $error');
     }
   }
 
@@ -209,7 +243,7 @@ class LoginPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: Row(
@@ -240,30 +274,38 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
 
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 50),
                   // google + apple sign in buttons
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // google button
-                      Expanded(
-                        child: Container(
+                      // Google button
+                      GestureDetector(
+                        onTap: () {
+                          // Call the function to handle Google Sign-In
+                          signInWithGoogle(context);
+                        },
+                        child: SizedBox(
                           width: 50, // Adjust width as needed
                           height: 150, // Adjust height as needed
-                          child: const SquareTile(
-                              imagePath: 'lib/assets/google.png'),
+                          child: Image.asset(
+                              'lib/assets/google.png'), // Replace 'lib/assets/google.png' with your image path
                         ),
                       ),
 
                       const SizedBox(width: 25),
 
-                      // apple button
-                      Expanded(
-                        child: Container(
+                      // Apple button (You can implement this later)
+                      GestureDetector(
+                        onTap: () {
+                          // Implement Sign-In with Apple
+                          // This can be done similarly to Google Sign-In
+                        },
+                        child: SizedBox(
                           width: 50, // Adjust width as needed
                           height: 150, // Adjust height as needed
-                          child: const SquareTile(
-                              imagePath: 'lib/assets/apple.png'),
+                          child: Image.asset(
+                              'lib/assets/apple.png'), // Replace 'lib/assets/apple.png' with your image path
                         ),
                       )
                     ],

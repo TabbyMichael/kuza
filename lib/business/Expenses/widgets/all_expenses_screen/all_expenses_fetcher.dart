@@ -34,10 +34,10 @@ class _AllExpensesFetcherState extends State<AllExpensesFetcher> {
           if (snapshot.hasError) {
             return Center(child: Text(snapshot.error.toString()));
           } else {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            return const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
-                children: const [
+                children: [
                   ExpenseSearch(),
                   Expanded(child: AllExpensesList()),
                 ],

@@ -17,7 +17,7 @@ void main() {
 }
 
 class HomePage extends StatelessWidget {
-  HomePage({Key? key}) : super(key: key);
+  HomePage({super.key});
 
   final List<String> tileNames = [
     'Sales',
@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
         break;
       case 'Expenses':
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => CategoryScreen()));
+            .push(MaterialPageRoute(builder: (context) => const CategoryScreen()));
         break;
       case 'Stores':
         Navigator.of(context)

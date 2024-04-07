@@ -17,6 +17,7 @@ class ExpenseCard extends StatelessWidget {
           context: context,
           builder: (_) => ConfirmBox(exp: exp),
         );
+        return null;
       },
       child: ListTile(
         leading: Padding(

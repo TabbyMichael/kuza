@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 class VerificationScreen extends StatelessWidget {
   final String email;
 
-  const VerificationScreen({Key? key, required this.email}) : super(key: key);
+  const VerificationScreen({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Email Verification'),
+        title: const Text('Email Verification'),
       ),
       body: Center(
         child: Column(
@@ -18,7 +18,7 @@ class VerificationScreen extends StatelessWidget {
             Text(
               'An email has been sent to $email for verification. Please check your inbox and follow the instructions.',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 18),
             ),
           ],
         ),
