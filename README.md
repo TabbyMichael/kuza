@@ -35,4 +35,14 @@ Facebook: KuzaApp
 LinkedIn: Kuza App
 Thank you for choosing Kuza App. Together, let's empower businesses across Africa for a brighter future.
 
+![Branding Page](https://github.com/TabbyMichael/kuza/raw/main/assets/120185762/e5cb6660-257e-4130-a045-ede2c35c14e2.png)
+
+![Register page](https://github.com/TabbyMichael/kuza/raw/main/assets/120185762/cb9b0c30-0786-453a-8f4a-db68107a5585.png)
+
+![login Page](https://github.com/TabbyMichael/kuza/raw/main/assets/120185762/e35de7d6-c8b5-4a6a-80d3-684d15af5caa.png)
+
+![Homepage](https://github.com/TabbyMichael/kuza/raw/main/assets/120185762/81677c42-ffbd-4d0e-bc0a-21d9f3e83d14.png)
+
+![Homepage](https://github.com/TabbyMichael/kuza/raw/main/assets/120185762/4be5a0f5-e9eb-4cd2-b4db-93c2aed8853e.png)
+
 
