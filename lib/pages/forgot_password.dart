@@ -17,7 +17,7 @@ class ForgotPassword extends StatelessWidget {
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         title: const Text(
-          'Uza',
+          'Kuza',
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,

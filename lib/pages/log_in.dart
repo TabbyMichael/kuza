@@ -153,7 +153,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Uza',
+          'kuza',
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -183,7 +183,7 @@ class LoginPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(23.0),
                     child: Text(
-                      'Welcome back to Uza',
+                      'Welcome back to Kuza',
                       style: TextStyle(
                         color: Colors.grey[700],
                         fontSize: 25,
