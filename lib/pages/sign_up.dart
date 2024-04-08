@@ -110,7 +110,7 @@ class SignUpPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(23.0),
                   child: Text(
-                    'Welcome back to Uza',
+                    'Welcome back to Kuza',
                     style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 25,
