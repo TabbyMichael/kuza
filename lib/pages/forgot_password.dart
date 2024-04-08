@@ -25,7 +25,7 @@ class ForgotPassword extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color.fromARGB(255, 167, 222, 248),
       ),
       body: SafeArea(
         child: Center(

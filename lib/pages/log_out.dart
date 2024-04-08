@@ -16,7 +16,7 @@ class LogOutPage extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(

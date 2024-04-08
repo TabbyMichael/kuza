@@ -94,7 +94,7 @@ class SignUpPage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color.fromARGB(255, 167, 222, 248),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
           onPressed: () {

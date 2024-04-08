@@ -96,7 +96,7 @@ class _BrandIntroPageState extends State<BrandIntroPage> {
             color: Colors.black,
           ),
         ),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color.fromARGB(255, 167, 222, 248),
       ),
       body: Column(
         children: [
@@ -161,7 +161,7 @@ class _BrandIntroPageState extends State<BrandIntroPage> {
                 height: currentIndex == index ? 12.0 : 8.0,
                 decoration: BoxDecoration(
                   color: currentIndex == index
-                      ? Colors.lightBlueAccent
+                      ? Color.fromARGB(255, 167, 222, 248)
                       : Colors.grey,
                   shape: BoxShape.circle,
                 ),
@@ -174,7 +174,7 @@ class _BrandIntroPageState extends State<BrandIntroPage> {
               Navigator.pushNamed(context, '/signUp');
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Color.fromARGB(255, 167, 222, 248),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(7.0),
               ),
@@ -194,7 +194,7 @@ class _BrandIntroPageState extends State<BrandIntroPage> {
               Navigator.pushNamed(context, '/login');
             },
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.lightBlueAccent,
+              backgroundColor: Color.fromARGB(255, 167, 222, 248),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(7.0),
               ),

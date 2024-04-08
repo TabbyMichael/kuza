@@ -198,7 +198,7 @@ class _SupportState extends State<Support> {
               print('Form is valid. Submitting data...');
             }
           },
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           child: const Text(
             "Send",
             style: TextStyle(

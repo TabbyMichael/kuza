@@ -52,8 +52,8 @@ class HomePage extends StatelessWidget {
             .push(MaterialPageRoute(builder: (context) => Products()));
         break;
       case 'Expenses':
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const CategoryScreen()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const CategoryScreen()));
         break;
       case 'Stores':
         Navigator.of(context)
@@ -89,7 +89,7 @@ class HomePage extends StatelessWidget {
       },
       child: Card(
         elevation: 0.2,
-        color: Colors.lightBlueAccent,
+        color: Color.fromARGB(255, 167, 222, 248),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -126,7 +126,7 @@ class HomePage extends StatelessWidget {
             color: Colors.black,
           ),
         ),
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color.fromARGB(255, 167, 222, 248),
         actions: [
           IconButton(
             icon: const Icon(
