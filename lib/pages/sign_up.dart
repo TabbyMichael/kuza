@@ -34,12 +34,12 @@ class SignUpPage extends StatelessWidget {
           content: Text(
             'An email has been sent to ${userCredential.user!.email} for verification. Please check your inbox.',
           ),
-          duration: Duration(seconds: 5),
+          duration: const Duration(seconds: 5),
         ),
       );
 
       // Navigate back to the login page after the message is shown
-      Future.delayed(Duration(seconds: 5), () {
+      Future.delayed(const Duration(seconds: 5), () {
         Navigator.of(context).pushReplacementNamed('/login');
       });
 
@@ -54,7 +54,7 @@ class SignUpPage extends StatelessWidget {
       }
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
+        const SnackBar(
           content: Text('Error signing up. Please try again.'),
           duration: Duration(seconds: 2),
         ),
@@ -72,8 +72,8 @@ class SignUpPage extends StatelessWidget {
             width: 50,
             height: 50,
             child: Platform.isIOS
-                ? CupertinoActivityIndicator()
-                : CircularProgressIndicator(),
+                ? const CupertinoActivityIndicator()
+                : const CircularProgressIndicator(),
           ),
         );
       },
@@ -85,8 +85,8 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text(
-          'Uza',
+        title: const Text(
+          'Kuza',
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
@@ -96,7 +96,7 @@ class SignUpPage extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.lightBlueAccent,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_rounded),
+          icon: const Icon(Icons.arrow_back_ios_new_rounded),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -110,7 +110,7 @@ class SignUpPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(23.0),
                   child: Text(
-                    'Welcome back to Uza',
+                    'Welcome back to Kuza',
                     style: TextStyle(
                       color: Colors.grey[700],
                       fontSize: 25,
