@@ -81,8 +81,36 @@ class LoginPage extends StatelessWidget {
 
   Future<void> signInWithGoogle(BuildContext context) async {
     try {
-      // Show loading indicator if necessary
-      // e.g., show a CircularProgressIndicator()
+      // Show loading indicator
+      if (Platform.isIOS) {
+        showCupertinoDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return const Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CupertinoActivityIndicator(),
+              ),
+            );
+          },
+        );
+      } else if (Platform.isAndroid) {
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (BuildContext context) {
+            return const Center(
+              child: SizedBox(
+                width: 50,
+                height: 50,
+                child: CircularProgressIndicator(),
+              ),
+            );
+          },
+        );
+      }
 
       final GoogleSignIn googleSignIn = GoogleSignIn();
       final GoogleSignInAccount? googleSignInAccount =
@@ -99,15 +127,22 @@ class LoginPage extends StatelessWidget {
             await FirebaseAuth.instance.signInWithCredential(credential);
         final User? user = authResult.user;
 
+        // Dismiss loading indicator
+        Navigator.pop(context); // Close the dialog
+
         // Navigate to the next screen after successful sign-in
         Navigator.of(context).pushReplacementNamed('/HomePage');
       } else {
+        // Dismiss loading indicator if sign-in failed
+        Navigator.pop(context); // Close the dialog
+
         // Handle sign-in failure
         // e.g., display an error message
       }
-
-      // Dismiss loading indicator if necessary
     } catch (error) {
+      // Dismiss loading indicator if an error occurred
+      Navigator.pop(context); // Close the dialog
+
       // Handle errors
       print('Error signing in with Google: $error');
     }
