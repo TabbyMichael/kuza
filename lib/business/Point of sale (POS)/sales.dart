@@ -97,28 +97,32 @@ class Sales extends StatelessWidget {
           ),
           // recent orders -> show last 3
           Expanded(
-            child: Consumer<CartModel>(
-              builder: (context, value, child) {
-                return GridView.builder(
-                  padding: const EdgeInsets.all(12),
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: value.shopItems.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 1 / 1.2,
-                  ),
-                  itemBuilder: (context, index) {
-                    return GroceryItemTile(
-                      itemName: value.shopItems[index][0],
-                      itemPrice: value.shopItems[index][1],
-                      imagePath: value.shopItems[index][2],
-                      color: value.shopItems[index][3],
-                      onPressed: () =>
-                          cartModel.addItemToCart(index), // Add item to cart
-                    );
-                  },
-                );
-              },
+            child: SingleChildScrollView(
+              child: Consumer<CartModel>(
+                builder: (context, value, child) {
+                  return GridView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(12),
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: value.shopItems.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1 / 1.2,
+                    ),
+                    itemBuilder: (context, index) {
+                      return GroceryItemTile(
+                        itemName: value.shopItems[index][0],
+                        itemPrice: value.shopItems[index][1],
+                        imagePath: value.shopItems[index][2],
+                        color: value.shopItems[index][3],
+                        onPressed: () =>
+                            cartModel.addItemToCart(index), // Add item to cart
+                      );
+                    },
+                  );
+                },
+              ),
             ),
           ),
         ],
