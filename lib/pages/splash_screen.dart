@@ -10,28 +10,21 @@ class SplashScreen extends StatelessWidget {
     });
 
     return Scaffold(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Color.fromARGB(255, 167, 222, 248),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-              width: 200, // Set your desired width
-              height: 200, // Set your desired height
+              width: 700, // Set your desired width
+              height: 700, // Set your desired height
               child: Image.asset(
-                'lib/assets/shop.png',
+                'lib/assets/Kuza__3_-removebg-preview (2).png',
               ),
             ),
             const SizedBox(
-                height:
-                    20), // Optional: Add some spacing between the logo and text
-            const Text(
-              'Uza',
-              style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black),
-            ),
+              height: 20,
+            ), // Optional: Add some spacing between the logo and text
           ],
         ),
       ),

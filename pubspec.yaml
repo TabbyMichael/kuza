@@ -75,7 +75,7 @@ flutter:
     - lib/assets/images/
     - lib/assets/Successmark.png
     - lib/assets/medicine.png
-    - lib/assets/shop.png
+    - lib/assets/Kuza.png
     - lib/assets/joshua-kettle-skjXoaPJVRo-unsplash (1).jpg
     - lib/assets/joshua-hanson-I49bIyEHaIs-unsplash.jpg
     - lib/assets/danique-tersmette-HusIRI6pw4k-unsplash.jpg
@@ -85,6 +85,7 @@ flutter:
     - lib/assets/markus-winkler-pOu_UmkOG-0-unsplash.jpg
     - lib/assets/google.png
     - lib/assets/apple.png
+    - lib/assets/Kuza__3_-removebg-preview (2).png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
