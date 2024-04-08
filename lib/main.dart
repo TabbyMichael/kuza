@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'MedFast',
+        title: 'Kuza',
         initialRoute: '/splash',
         routes: {
           '/splash': (context) => const SplashScreen(),

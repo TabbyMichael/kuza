@@ -89,7 +89,7 @@ class _BrandIntroPageState extends State<BrandIntroPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Uza',
+          'Kuza',
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.w600,
