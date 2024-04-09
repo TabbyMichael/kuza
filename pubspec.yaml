@@ -86,6 +86,11 @@ flutter:
     - lib/assets/google.png
     - lib/assets/apple.png
     - lib/assets/Kuza__3_-removebg-preview (2).png
+    - lib/assets/Kuza.png
+    - lib/assets/florence-1-scaled.jpg
+    - lib/assets/tanzania-shopkeeper-947x711-366212448.jpg
+    - lib/assets/Kenya_Mom-and-Pop-Shops_by-Paul-Njuguna-TNS-August-2016-1-500930076.jpg
+    - lib/assets/Tz markets.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
