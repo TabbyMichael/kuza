@@ -72,7 +72,7 @@ class Supplier extends StatelessWidget {
                     // Save the supplier details here
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightBlueAccent,
+                    backgroundColor: Color.fromARGB(255, 167, 222, 248),
                   ),
                   child: const Text(
                     'Save',
@@ -173,7 +173,7 @@ class Supplier extends StatelessWidget {
                       // Action for exporting to PDF/Excel
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
+                      backgroundColor: Color.fromARGB(255, 167, 222, 248),
                       textStyle: const TextStyle(fontSize: 20),
                     ),
                     icon: const Icon(Icons.insert_drive_file),
@@ -239,7 +239,7 @@ class Supplier extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -268,7 +268,7 @@ class Supplier extends StatelessWidget {
           onPressed: () {
             _showSupplierForm(context);
           },
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           child: const Icon(
             Icons.add,
             size: 36,

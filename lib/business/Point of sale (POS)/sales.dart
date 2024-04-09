@@ -24,7 +24,7 @@ class Sales extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.lightBlueAccent,
+        backgroundColor: Color.fromARGB(255, 167, 222, 248),
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -49,7 +49,7 @@ class Sales extends StatelessWidget {
         ),
         child: const Icon(
           Icons.shopping_bag,
-          color: Colors.lightBlueAccent,
+          color: Color.fromARGB(255, 167, 222, 248),
           size: 28,
         ),
       ),

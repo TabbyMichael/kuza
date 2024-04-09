@@ -25,8 +25,8 @@ class UserPage extends StatelessWidget {
                 decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      Color(0xFF4FC3F7),
-                      Color(0xFF4FC3F7),
+                      Color.fromARGB(255, 167, 222, 248),
+                      Color.fromARGB(255, 167, 222, 248),
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.center,
@@ -141,7 +141,8 @@ class UserPage extends StatelessWidget {
                                           MediaQuery.of(context).size.height /
                                               20,
                                       decoration: BoxDecoration(
-                                        color: const Color(0xFF4FC3F7),
+                                        color: const Color.fromARGB(
+                                            255, 167, 222, 248),
                                         borderRadius: BorderRadius.all(
                                           Radius.circular(MediaQuery.of(context)
                                                   .size
@@ -212,7 +213,7 @@ class UserPage extends StatelessWidget {
               ),
               Icon(
                 icon,
-                color: const Color(0xFF4FC3F7),
+                color: Color.fromARGB(255, 167, 222, 248),
                 size: 36.0,
               ),
               SizedBox(
