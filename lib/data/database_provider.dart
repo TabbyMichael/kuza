@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import '../constants/icons.dart';
-import './ex_category.dart';
-import './expense.dart';
+import '../business/Expenses/constants/icons.dart';
+import '../models/ex_category.dart';
+import '../models/expense.dart';
 
 class DatabaseProvider with ChangeNotifier {
   String _searchText = '';

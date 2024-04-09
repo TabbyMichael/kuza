@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../models/database_provider.dart';
+import '../../../../data/database_provider.dart';
 import '../expense_screen/expense_card.dart';
 
 class AllExpensesList extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kuza/business/Expenses/models/database_provider.dart';
-import 'package:kuza/business/Expenses/models/expense.dart';
+import 'package:kuza/data/database_provider.dart';
+import 'package:kuza/models/expense.dart';
 import 'package:provider/provider.dart';
 
 class ConfirmBox extends StatelessWidget {

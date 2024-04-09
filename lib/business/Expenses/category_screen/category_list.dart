@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kuza/business/Expenses/models/database_provider.dart';
+import 'package:kuza/data/database_provider.dart';
 import 'package:provider/provider.dart';
 import './category_card.dart';
 

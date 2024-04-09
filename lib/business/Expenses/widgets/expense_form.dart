@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-import '../models/database_provider.dart';
+import '../../../data/database_provider.dart';
 import '../constants/icons.dart';
-import '../models/expense.dart';
+import '../../../models/expense.dart';
 
 class ExpenseForm extends StatefulWidget {
   const ExpenseForm({super.key});

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:intl/intl.dart';
-import 'package:kuza/business/Expenses/models/database_provider.dart';
+import 'package:kuza/data/database_provider.dart';
 import 'package:provider/provider.dart';
 
 class TotalChart extends StatefulWidget {
