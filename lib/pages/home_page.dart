@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kuza/business/Customers/customers.dart';
 import 'package:kuza/pages/notification.dart';
 import 'package:kuza/pages/widgets/navigation_drawer.dart';
 import 'package:kuza/business/Inventory/products.dart';
@@ -6,7 +7,6 @@ import 'package:kuza/business/Expenses/screens/category_screen.dart';
 import 'package:kuza/business/Point%20of%20sale%20(POS)/sales.dart';
 import 'package:kuza/business/stores.dart';
 import 'package:kuza/business/suppliers.dart';
-import 'package:kuza/business/customers.dart';
 import 'package:kuza/business/Dashboard/reports.dart';
 import 'package:kuza/business/other_incomes.dart';
 
