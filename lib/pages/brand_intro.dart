@@ -15,31 +15,32 @@ class _BrandIntroPageState extends State<BrandIntroPage> {
       'title': 'Elevate Your Shop',
       'description':
           'Effortlessly manage your shop with our all-in-one solution',
-      'image': 'lib/assets/joshua-hanson-I49bIyEHaIs-unsplash.jpg',
+      'image': 'lib/assets/florence-1-scaled.jpg',
     },
     {
       'title': 'Swift Deliveries',
       'description':
           'Receive and send orders with lightning-fast delivery services',
-      'image': 'lib/assets/joshua-kettle-skjXoaPJVRo-unsplash (1).jpg',
+      'image': 'lib/assets/tanzania-shopkeeper-947x711-366212448.jpg',
     },
     {
       'title': 'Diverse Selection',
       'description':
           'Offer a diverse range of products to cater to your customers',
-      'image': 'lib/assets/danique-tersmette-HusIRI6pw4k-unsplash.jpg',
+      'image': 'lib/assets/Tz markets.jpeg',
     },
     {
       'title': 'Inventory Mastery',
       'description':
           'Efficiently track and manage your inventory to never run out of stock',
-      'image': 'lib/assets/nick-fewings--LOEswy6V8k-unsplash.jpg',
+      'image': 'lib/assets/Kuza.png',
     },
     {
       'title': 'Sales Insights',
       'description':
           'Gain valuable insights into your sales data for smarter business decisions',
-      'image': 'lib/assets/danique-tersmette-cGUTNCtBeEs-unsplash.jpg',
+      'image':
+          'lib/assets/Kenya_Mom-and-Pop-Shops_by-Paul-Njuguna-TNS-August-2016-1-500930076.jpg',
     }
   ];
 
