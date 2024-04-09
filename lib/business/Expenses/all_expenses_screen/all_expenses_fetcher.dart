@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kuza/business/Expenses/models/database_provider.dart';
+import 'package:kuza/data/database_provider.dart';
 import 'package:provider/provider.dart';
 import './all_expenses_list.dart';
 import './expense_search.dart';

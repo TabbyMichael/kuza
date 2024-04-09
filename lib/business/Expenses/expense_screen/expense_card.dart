@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:kuza/business/Expenses/constants/icons.dart';
-import 'package:kuza/business/Expenses/models/expense.dart';
+import 'package:kuza/models/expense.dart';
 import './confirm_box.dart';
 
 class ExpenseCard extends StatelessWidget {

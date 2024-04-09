@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../models/database_provider.dart';
-import '../../models/expense.dart';
+import '../../../../data/database_provider.dart';
+import '../../../../models/expense.dart';
 
 class ConfirmBox extends StatelessWidget {
   const ConfirmBox({

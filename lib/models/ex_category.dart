@@ -1,7 +1,7 @@
 // this is expense category class or model
 // every expense will have a category that it belongs to.
 import 'package:flutter/material.dart';
-import '../constants/icons.dart';
+import '../business/Expenses/constants/icons.dart';
 
 class ExpenseCategory {
   final String title; // the title of the category
