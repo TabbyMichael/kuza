@@ -318,7 +318,7 @@ class Products extends StatelessWidget {
                       }
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
+                      backgroundColor: Color.fromARGB(255, 167, 222, 248),
                     ),
                     child: const Text('Scan Barcode'),
                   ),
@@ -399,7 +399,7 @@ class Products extends StatelessWidget {
                       // Action for exporting to PDF/Excel
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
+                      backgroundColor: Color.fromARGB(255, 167, 222, 248),
                       textStyle: const TextStyle(
                         fontSize: 20,
                       ),
@@ -487,7 +487,7 @@ class Products extends StatelessWidget {
             ),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.lightBlueAccent,
+                color: Color.fromARGB(255, 167, 222, 248),
                 width: 2.0,
               ),
             ),
@@ -542,7 +542,7 @@ class Products extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -571,7 +571,7 @@ class Products extends StatelessWidget {
           onPressed: () {
             _showProductForm(context);
           },
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           child: const Icon(
             Icons.add,
             size: 36,

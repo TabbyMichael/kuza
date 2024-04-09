@@ -78,10 +78,10 @@ class OtherIncome extends StatelessWidget {
                     builder: (BuildContext context, Widget? child) {
                       return Theme(
                         data: ThemeData.light().copyWith(
-                          primaryColor: Colors.lightBlueAccent,
+                          primaryColor: Color.fromARGB(255, 167, 222, 248),
                           scaffoldBackgroundColor: Colors.lightBlueAccent,
                           colorScheme: const ColorScheme.light(
-                            primary: Colors.lightBlueAccent,
+                            primary: Color.fromARGB(255, 167, 222, 248),
                           ),
                           buttonTheme: const ButtonThemeData(
                               textTheme: ButtonTextTheme.primary),
@@ -109,7 +109,7 @@ class OtherIncome extends StatelessWidget {
                     // Save the income here
                   },
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.lightBlueAccent,
+                    backgroundColor: Color.fromARGB(255, 167, 222, 248),
                   ),
                   child: const Text('Save',
                       style: TextStyle(
@@ -161,7 +161,7 @@ class OtherIncome extends StatelessWidget {
             ),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
-                color: Colors.lightBlueAccent,
+                color: Color.fromARGB(255, 167, 222, 248),
                 width: 2.0,
               ),
             ),
@@ -458,7 +458,7 @@ class OtherIncome extends StatelessWidget {
                       // Handle search button press
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
+                      backgroundColor: Color.fromARGB(255, 167, 222, 248),
                     ),
                     child: const Text(
                       'Search',
@@ -522,7 +522,7 @@ class OtherIncome extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -551,7 +551,7 @@ class OtherIncome extends StatelessWidget {
           onPressed: () {
             _showIncomeForm(context);
           },
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Color.fromARGB(255, 167, 222, 248),
           child: const Icon(
             Icons.add,
             size: 36,

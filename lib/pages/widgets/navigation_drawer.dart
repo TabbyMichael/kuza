@@ -44,7 +44,7 @@ class NavigationDrawerWidget extends StatelessWidget {
               const Spacer(),
               const CircleAvatar(
                 radius: 24,
-                backgroundColor: Colors.blue,
+                backgroundColor: Color.fromARGB(255, 167, 222, 248),
                 child: Icon(Icons.add_comment_outlined, color: Colors.black),
               )
             ],
@@ -101,7 +101,7 @@ class NavigationDrawerWidget extends StatelessWidget {
 
     return Drawer(
       child: Material(
-        color: Colors.lightBlueAccent,
+        color: Color.fromARGB(255, 167, 222, 248),
         child: ListView(
           children: <Widget>[
             buildHeader(
