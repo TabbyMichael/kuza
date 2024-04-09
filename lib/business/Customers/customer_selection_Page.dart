@@ -50,6 +50,7 @@ class _CustomerSelectionPageState extends State<CustomerSelectionPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Select Customers'),
+        // ignore: prefer_const_constructors
         backgroundColor: Color.fromARGB(255, 167, 222, 248),
         actions: [
           IconButton(

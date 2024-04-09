@@ -61,7 +61,7 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
         return Theme(
           data: ThemeData.light().copyWith(
             colorScheme: ColorScheme.fromSwatch().copyWith(
-              primary: Color.fromARGB(
+              primary: const Color.fromARGB(
                   255, 167, 222, 248), // Calendar background color
             ),
           ),
@@ -83,7 +83,7 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Add Customer'),
-        backgroundColor: Color.fromARGB(255, 167, 222, 248),
+        backgroundColor: const Color.fromARGB(255, 167, 222, 248),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
