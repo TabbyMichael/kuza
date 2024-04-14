@@ -5,14 +5,14 @@ import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/products.dart';
 import 'package:kuza/pages/home_page.dart';
 
-class Products extends StatefulWidget {
-  Products({Key? key}) : super(key: key);
+class ProductsPage extends StatefulWidget {
+  ProductsPage({Key? key}) : super(key: key);
 
   @override
-  _ProductsState createState() => _ProductsState();
+  _ProductsPageState createState() => _ProductsPageState();
 }
 
-class _ProductsState extends State<Products> {
+class _ProductsPageState extends State<ProductsPage> {
   final DatabaseHelper dbHelper = DatabaseHelper();
   TextEditingController _searchController = TextEditingController();
   late List<Product> _productList = [];
@@ -50,6 +50,40 @@ class _ProductsState extends State<Products> {
     });
   }
 
+  Future<void> _confirmDeleteProduct(Product product) async {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Confirm Delete'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Are you sure you want to delete ${product.productName}?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Delete'),
+              onPressed: () async {
+                _deleteProduct(product);
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget _buildProductList(BuildContext context) {
     return Column(
       children: [
@@ -73,13 +107,29 @@ class _ProductsState extends State<Products> {
             itemCount: _productList.length, // Use _productList directly
             itemBuilder: (BuildContext context, int index) {
               Product product = _productList[index];
-              return ListTile(
-                title: Text(product.productName),
-                subtitle:
-                    Text('SKU: ${product.sku} | Quantity: ${product.quantity}'),
-                onTap: () {
-                  _editProduct(product);
-                },
+              return Card(
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10),
+                  side: BorderSide(
+                    color: Colors.grey[300]!, // Border color
+                    width: 1,
+                  ),
+                ),
+                child: ListTile(
+                  title: Text(product.productName),
+                  subtitle: Text(
+                      'SKU: ${product.sku} | Quantity: ${product.quantity}'),
+                  trailing: IconButton(
+                    icon: Icon(Icons.delete, color: Colors.black),
+                    onPressed: () {
+                      _confirmDeleteProduct(product); // Removed await here
+                    },
+                  ),
+                  onTap: () {
+                    _editProduct(product);
+                  },
+                ),
               );
             },
           ),
@@ -98,6 +148,15 @@ class _ProductsState extends State<Products> {
       // Refresh the product list after editing
       _loadProducts();
     });
+  }
+
+  void _deleteProduct(Product product) async {
+    try {
+      await dbHelper.deleteProduct(product.id!);
+      _loadProducts();
+    } catch (e) {
+      print('Error deleting product: $e');
+    }
   }
 
   void _showMenuContainer(BuildContext context) {
