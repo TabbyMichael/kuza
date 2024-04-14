@@ -12,7 +12,8 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Expenses'),
-        backgroundColor: Colors.lightBlueAccent, // Set the background color
+        backgroundColor:
+            Color.fromARGB(255, 167, 222, 248), // Set the background color
       ),
       body: const CategoryFetcher(),
       floatingActionButton: FloatingActionButton(
