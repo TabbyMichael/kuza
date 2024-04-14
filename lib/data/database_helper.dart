@@ -1,4 +1,5 @@
 import 'package:kuza/models/customers.dart';
+import 'package:kuza/models/products.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -16,6 +17,14 @@ class DatabaseHelper {
   final String columnContactNo = 'contactNo';
   final String columnEmailAddress = 'emailAddress';
   final String columnDate = 'date'; // Added column for date
+
+  // Table name for Products
+  final String productTableName = 'products'; // Table name for products
+  final String columnProductName = 'productName';
+  final String columnQuantity = 'quantity';
+  final String columnSku = 'sku';
+  final String columnBarcode = 'barcode';
+  final String columnSellingPrice = 'sellingPrice';
 
   // Singleton constructor
   factory DatabaseHelper() {
@@ -62,8 +71,20 @@ class DatabaseHelper {
       $columnContactNo TEXT,
       $columnEmailAddress TEXT,
       $columnDate TEXT
-    )
-  ''');
+      )
+    ''');
+
+    // Create the products table
+    await db.execute('''
+    CREATE TABLE $productTableName (
+      $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+      $columnProductName TEXT,
+      $columnQuantity INTEGER,
+      $columnSku TEXT,
+      $columnBarcode TEXT,
+      $columnSellingPrice REAL
+      )
+    ''');
   }
 
   // Implement schema migration logic if necessary
@@ -108,6 +129,49 @@ class DatabaseHelper {
     final Database? db = await database;
     final int result = await db!.delete(
       customerTableName,
+      where: '$columnId = ?',
+      whereArgs: [id],
+    );
+    return result;
+  }
+
+  // Insert a product into the products table
+  Future<int> insertProduct(Product product) async {
+    final Database? db = await database;
+    final int result = await db!.insert(
+      productTableName,
+      product.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    return result;
+  }
+
+  // Query all products from the products table
+  Future<List<Product>> getProducts() async {
+    final Database? db = await database;
+    final List<Map<String, dynamic>> maps = await db!.query(productTableName);
+    return List.generate(maps.length, (i) {
+      return Product.fromMap(maps[i]);
+    });
+  }
+
+  // Update a product in the products table
+  Future<int> updateProduct(Product product) async {
+    final Database? db = await database;
+    final int result = await db!.update(
+      productTableName,
+      product.toMap(),
+      where: '$columnId = ?',
+      whereArgs: [product.id],
+    );
+    return result;
+  }
+
+  // Delete a product from the products table
+  Future<int> deleteProduct(int id) async {
+    final Database? db = await database;
+    final int result = await db!.delete(
+      productTableName,
       where: '$columnId = ?',
       whereArgs: [id],
     );
