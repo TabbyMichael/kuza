@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kuza/business/Suppliers/add_customers.dart';
 import 'package:kuza/pages/home_page.dart';
 
 class Supplier extends StatelessWidget {
@@ -40,54 +41,6 @@ class Supplier extends StatelessWidget {
               style: TextStyle(fontSize: 20.0, color: Colors.black)),
         ],
       ),
-    );
-  }
-
-  void _showSupplierForm(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      builder: (BuildContext context) {
-        return Container(
-          padding: const EdgeInsets.all(16.0),
-          height: MediaQuery.of(context).size.height * 0.54,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 16.0),
-              _customInputField(supplierNameController, 'Supplier Name',
-                  'Enter Supplier Name'),
-              const SizedBox(height: 16.0),
-              _customInputField(phoneNoController, 'Phone No', 'Enter Phone No',
-                  TextInputType.phone),
-              const SizedBox(height: 16.0),
-              _customInputField(emailAddressController, 'Email Address',
-                  'Enter Email Address', TextInputType.emailAddress),
-              const SizedBox(height: 40.0),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () {
-                    // Save the supplier details here
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 167, 222, 248),
-                  ),
-                  child: const Text(
-                    'Save',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
     );
   }
 
@@ -266,7 +219,9 @@ class Supplier extends StatelessWidget {
         body: buildEmptyMessage(context),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            _showSupplierForm(context);
+            Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => AddSupplierPage(),
+            ));
           },
           backgroundColor: Color.fromARGB(255, 167, 222, 248),
           child: const Icon(

@@ -1,7 +1,9 @@
+import 'dart:async';
+import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:kuza/models/customers.dart';
 import 'package:kuza/models/products.dart';
-import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+import 'package:kuza/models/suppliers.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper; // Singleton DatabaseHelper
@@ -25,6 +27,13 @@ class DatabaseHelper {
   final String columnSku = 'sku';
   final String columnBarcode = 'barcode';
   final String columnSellingPrice = 'sellingPrice';
+
+  // Table name for Suppliers
+  final String supplierTableName = 'suppliers'; // Table name for suppliers
+  final String columnSupplierName = 'supplierName';
+  final String columnContactPerson = 'contactPerson';
+  final String columnContactNoSupplier = 'contactNo';
+  final String columnEmailAddressSupplier = 'emailAddress';
 
   // Singleton constructor
   factory DatabaseHelper() {
@@ -50,7 +59,7 @@ class DatabaseHelper {
       final String path = join(await getDatabasesPath(), 'kuza.db');
       final Database database = await openDatabase(
         path,
-        version: 4, // Increment the version
+        version: 5, // Increment the version
         onCreate: _createDb,
         onUpgrade: _upgradeDb,
       );
@@ -61,7 +70,7 @@ class DatabaseHelper {
     }
   }
 
-  // Create the database tables for products and expenses
+  // Create the database tables for customers, products, and suppliers
   void _createDb(Database db, int newVersion) async {
     // Create the customers table
     await db.execute('''
@@ -83,6 +92,17 @@ class DatabaseHelper {
       $columnSku TEXT,
       $columnBarcode TEXT,
       $columnSellingPrice REAL
+      )
+    ''');
+
+    // Create the suppliers table
+    await db.execute('''
+    CREATE TABLE $supplierTableName (
+      $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+      $columnSupplierName TEXT,
+      $columnContactPerson TEXT,
+      $columnContactNoSupplier TEXT,
+      $columnEmailAddressSupplier TEXT
       )
     ''');
   }
@@ -177,6 +197,55 @@ class DatabaseHelper {
     final Database? db = await database;
     final int result = await db!.delete(
       productTableName,
+      where: '$columnId = ?',
+      whereArgs: [id],
+    );
+    return result;
+  }
+
+  // Insert a supplier into the suppliers table
+  Future<int> insertSupplier(Supplier supplier) async {
+    final Database? db = await database;
+    final int result = await db!.insert(
+      supplierTableName,
+      supplier.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    return result;
+  }
+
+  // Query all suppliers from the suppliers table
+  Future<List<Supplier>> getSuppliers() async {
+    final Database? db = await database;
+    try {
+      final List<Map<String, dynamic>> maps =
+          await db!.query(supplierTableName);
+      return List.generate(maps.length, (i) {
+        return Supplier.fromMap(maps[i]);
+      });
+    } catch (e) {
+      print('Error getting suppliers: $e');
+      return [];
+    }
+  }
+
+  // Update a supplier in the suppliers table
+  Future<int> updateSupplier(Supplier supplier) async {
+    final Database? db = await database;
+    final int result = await db!.update(
+      supplierTableName,
+      supplier.toMap(),
+      where: '$columnId = ?',
+      whereArgs: [supplier.id],
+    );
+    return result;
+  }
+
+  // Delete a supplier from the suppliers table
+  Future<int> deleteSupplier(int id) async {
+    final Database? db = await database;
+    final int result = await db!.delete(
+      supplierTableName,
       where: '$columnId = ?',
       whereArgs: [id],
     );
