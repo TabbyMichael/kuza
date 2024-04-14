@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
         break;
       case 'Products':
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => Products()));
+            .push(MaterialPageRoute(builder: (context) => ProductsPage()));
         break;
       case 'Expenses':
         Navigator.of(context).push(
