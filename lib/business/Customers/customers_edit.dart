@@ -110,99 +110,101 @@ class _EditCustomerPageState extends State<EditCustomerPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Text(
-                'Name',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Name',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              TextFormField(
-                controller: _customerNameController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                ),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Name is required';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16.0),
-              const Text(
-                'Contact No',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              TextFormField(
-                controller: _contactNoController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.phone,
-                validator: _validateContactNo,
-              ),
-              const SizedBox(height: 16.0),
-              const Text(
-                'Email Address',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              TextFormField(
-                controller: _emailAddressController,
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                validator: (value) {
-                  if (value != null && value.isNotEmpty) {
-                    if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
-                        .hasMatch(value)) {
-                      return 'Enter a valid email';
+                TextFormField(
+                  controller: _customerNameController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Name is required';
                     }
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16.0),
-              const Text(
-                'Date',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w500,
+                    return null;
+                  },
                 ),
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: TextField(
-                      controller: _dateController,
-                      readOnly: true,
-                      onTap: () => _selectDate(context),
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        suffixIcon: Icon(Icons.calendar_today),
+                const SizedBox(height: 16.0),
+                const Text(
+                  'Contact No',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                TextFormField(
+                  controller: _contactNoController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.phone,
+                  validator: _validateContactNo,
+                ),
+                const SizedBox(height: 16.0),
+                const Text(
+                  'Email Address',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                TextFormField(
+                  controller: _emailAddressController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) {
+                    if (value != null && value.isNotEmpty) {
+                      if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                          .hasMatch(value)) {
+                        return 'Enter a valid email';
+                      }
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16.0),
+                const Text(
+                  'Date',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: TextField(
+                        controller: _dateController,
+                        readOnly: true,
+                        onTap: () => _selectDate(context),
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          suffixIcon: Icon(Icons.calendar_today),
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: _saveCustomer,
-                child: const Text('Save Changes'),
-              ),
-            ],
+                  ],
+                ),
+                const SizedBox(height: 16.0),
+                ElevatedButton(
+                  onPressed: _saveCustomer,
+                  child: const Text('Save Changes'),
+                ),
+              ],
+            ),
           ),
         ),
       ),
