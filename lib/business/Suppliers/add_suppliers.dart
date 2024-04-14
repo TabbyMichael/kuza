@@ -36,7 +36,7 @@ class _AddSupplierPageState extends State<AddSupplierPage> {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 167, 222, 248),
+          backgroundColor: const Color.fromARGB(255, 167, 222, 248),
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -64,32 +64,43 @@ class _AddSupplierPageState extends State<AddSupplierPage> {
               _customInputField(emailAddressController, 'Email Address',
                   'Enter Email Address', TextInputType.emailAddress),
               const SizedBox(height: 40.0),
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  onPressed: () async {
-                    Supplier supplier = Supplier(
-                      supplierName: supplierNameController.text,
-                      contactPerson: phoneNoController.text,
-                      contactNo: phoneNoController.text,
-                      emailAddress: emailAddressController.text,
-                    );
-                    await dbHelper.insertSupplier(supplier);
-                    Navigator.pop(context); // Close the page
-                  },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color.fromARGB(255, 167, 222, 248),
-                  ),
-                  child: const Text(
-                    'Save',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ElevatedButton(
+                    onPressed: () async {
+                      Supplier supplier = Supplier(
+                        supplierName: supplierNameController.text,
+                        contactPerson: phoneNoController.text,
+                        contactNo: phoneNoController.text,
+                        emailAddress: emailAddressController.text,
+                      );
+                      await dbHelper.insertSupplier(supplier);
+
+                      // Update the state to refresh the UI
+                      setState(() {});
+
+                      Navigator.pop(context); // Close the page
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical:
+                              6), // Increase padding to increase button size
+                      minimumSize: const Size(
+                          120, 50), // Set minimum size to increase button size
+                      backgroundColor: const Color.fromARGB(255, 167, 222, 248),
+                    ),
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(
+                        fontSize: 26, // Increased font size
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
                     ),
                   ),
-                ),
+                ],
               ),
             ],
           ),

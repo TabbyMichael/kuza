@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kuza/business/Suppliers/add_customers.dart';
+import 'package:kuza/business/Suppliers/add_suppliers.dart';
 import 'package:kuza/pages/home_page.dart';
 
 class Supplier extends StatelessWidget {
@@ -10,36 +10,33 @@ class Supplier extends StatelessWidget {
   Supplier({super.key});
 
   Widget buildEmptyMessage(BuildContext context) {
-    return Container(
-      height:
-          MediaQuery.of(context).size.height * 0.34, // 34% of the screen height
-      padding: const EdgeInsets.all(16.0),
-      margin: const EdgeInsets.all(16.0),
-      decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 219, 240, 249),
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(top: 16.0),
-            child: Text('Hey!',
-                style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black)),
+    return Center(
+      child: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height *
+              0.16, // 40% of the screen height
+          padding: const EdgeInsets.all(16.0),
+          margin: const EdgeInsets.all(16.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(8.0),
           ),
-          SizedBox(height: 10.0),
-          Text("You haven't added any suppliers yet.",
-              style: TextStyle(fontSize: 20.0, color: Colors.black)),
-          SizedBox(height: 10.0),
-          Text("Keep track of your suppliers by adding their details.",
-              style: TextStyle(fontSize: 20.0, color: Colors.black)),
-          SizedBox(height: 10.0),
-          Text('Tap on the + Icon below to add a new supplier.',
-              style: TextStyle(fontSize: 20.0, color: Colors.black)),
-        ],
+          child: const Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                "You don't have any Suppliers yet.",
+                style: TextStyle(fontSize: 20.0),
+              ),
+              SizedBox(height: 10.0),
+              Text(
+                "Click + to add some suppliers",
+                style: TextStyle(fontSize: 20.0),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -126,7 +123,7 @@ class Supplier extends StatelessWidget {
                       // Action for exporting to PDF/Excel
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 167, 222, 248),
+                      backgroundColor: const Color.fromARGB(255, 167, 222, 248),
                       textStyle: const TextStyle(fontSize: 20),
                     ),
                     icon: const Icon(Icons.insert_drive_file),
@@ -192,7 +189,7 @@ class Supplier extends StatelessWidget {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 167, 222, 248),
+          backgroundColor: const Color.fromARGB(255, 167, 222, 248),
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -219,11 +216,11 @@ class Supplier extends StatelessWidget {
         body: buildEmptyMessage(context),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.of(context).pushReplacement(MaterialPageRoute(
-              builder: (context) => AddSupplierPage(),
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const AddSupplierPage(),
             ));
           },
-          backgroundColor: Color.fromARGB(255, 167, 222, 248),
+          backgroundColor: const Color.fromARGB(255, 167, 222, 248),
           child: const Icon(
             Icons.add,
             size: 36,
