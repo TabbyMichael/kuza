@@ -170,7 +170,17 @@ class _AddCustomerPageState extends State<AddCustomerPage> {
                 const SizedBox(height: 16.0),
                 ElevatedButton(
                   onPressed: _saveCustomer,
-                  child: const Text('Save'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 167, 222, 248),
+                  ),
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),

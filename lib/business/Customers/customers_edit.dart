@@ -198,10 +198,20 @@ class _EditCustomerPageState extends State<EditCustomerPage> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16.0),
+                const SizedBox(height: 46.0),
                 ElevatedButton(
                   onPressed: _saveCustomer,
-                  child: const Text('Save Changes'),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromARGB(255, 167, 222, 248),
+                  ),
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),
