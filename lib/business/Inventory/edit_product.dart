@@ -1,33 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/products.dart'; // Import package for date formatting
 
-class AddProductPage extends StatefulWidget {
-  const AddProductPage({Key? key}) : super(key: key);
+class EditProductPage extends StatefulWidget {
+  final Product product;
+
+  const EditProductPage({Key? key, required this.product}) : super(key: key);
 
   @override
-  _AddProductPageState createState() => _AddProductPageState();
+  _EditProductPageState createState() => _EditProductPageState();
 }
 
-class _AddProductPageState extends State<AddProductPage> {
-  final TextEditingController _productNameController = TextEditingController();
-  final TextEditingController _quantityController = TextEditingController();
-  final TextEditingController _skuController = TextEditingController();
-  final TextEditingController _barcodeController = TextEditingController();
-  final TextEditingController _sellingPriceController = TextEditingController();
+class _EditProductPageState extends State<EditProductPage> {
+  late TextEditingController _productNameController;
+  late TextEditingController _quantityController;
+  late TextEditingController _skuController;
+  late TextEditingController _barcodeController;
+  late TextEditingController _sellingPriceController;
   late DatabaseHelper _databaseHelper;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Form key
 
   @override
   void initState() {
     super.initState();
+    _productNameController =
+        TextEditingController(text: widget.product.productName);
+    _quantityController =
+        TextEditingController(text: widget.product.quantity.toString());
+    _skuController = TextEditingController(text: widget.product.sku);
+    _barcodeController = TextEditingController(text: widget.product.barcode);
+    _sellingPriceController =
+        TextEditingController(text: widget.product.sellingPrice.toString());
     _databaseHelper = DatabaseHelper();
   }
 
-  Future<void> _saveProduct() async {
+  Future<void> _updateProduct() async {
     if (_formKey.currentState!.validate()) {
-      Product newProduct = Product(
+      Product updatedProduct = Product(
+        id: widget.product.id,
         productName: _productNameController.text,
         quantity: int.parse(_quantityController.text),
         sku: _skuController.text,
@@ -36,14 +46,14 @@ class _AddProductPageState extends State<AddProductPage> {
       );
 
       try {
-        // Insert the new product into the database
-        await _databaseHelper.insertProduct(newProduct);
+        // Update the product in the database
+        await _databaseHelper.updateProduct(updatedProduct);
 
         // Navigate back to the previous screen
         Navigator.pop(context);
       } catch (e) {
-        // Handle database insertion error
-        print('Error saving product: $e');
+        // Handle database update error
+        print('Error updating product: $e');
         // Optionally, display an error message to the user
         // Or perform other error handling actions
       }
@@ -54,7 +64,7 @@ class _AddProductPageState extends State<AddProductPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Product'),
+        title: const Text('Edit Product'),
         backgroundColor: const Color.fromARGB(255, 167, 222, 248),
       ),
       body: Padding(
@@ -172,7 +182,7 @@ class _AddProductPageState extends State<AddProductPage> {
                 ),
                 const SizedBox(height: 16.0),
                 ElevatedButton(
-                  onPressed: _saveProduct,
+                  onPressed: _updateProduct,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 167, 222, 248),
                   ),

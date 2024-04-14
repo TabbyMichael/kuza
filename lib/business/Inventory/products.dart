@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kuza/business/Inventory/add_products.dart';
+import 'package:kuza/business/Inventory/edit_product.dart';
 import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/products.dart';
 import 'package:kuza/pages/home_page.dart';
@@ -13,10 +14,90 @@ class Products extends StatefulWidget {
 
 class _ProductsState extends State<Products> {
   final DatabaseHelper dbHelper = DatabaseHelper();
+  TextEditingController _searchController = TextEditingController();
+  late List<Product> _productList = [];
+  late List<Product> _allProducts = [];
 
   @override
   void initState() {
     super.initState();
+    _loadProducts();
+  }
+
+  void _loadProducts() async {
+    try {
+      List<Product> products = await dbHelper.getProducts();
+      setState(() {
+        _productList = products;
+        _allProducts = products;
+      });
+    } catch (e) {
+      print('Error loading products: $e');
+      setState(() {
+        _productList = [];
+        _allProducts = [];
+      });
+    }
+  }
+
+  void _filterProducts(String query) {
+    setState(() {
+      _productList = _allProducts
+          .where((product) =>
+              product.productName.toLowerCase().contains(query.toLowerCase()) ||
+              product.sku.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
+  Widget _buildProductList(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: TextFormField(
+            controller: _searchController,
+            onChanged: (value) {
+              _filterProducts(
+                  value); // Call _filterProducts to update the _productList
+            },
+            decoration: const InputDecoration(
+              hintText: 'Search products...',
+              prefixIcon: Icon(Icons.search),
+              border: OutlineInputBorder(), // Rectangular border
+            ),
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            itemCount: _productList.length, // Use _productList directly
+            itemBuilder: (BuildContext context, int index) {
+              Product product = _productList[index];
+              return ListTile(
+                title: Text(product.productName),
+                subtitle:
+                    Text('SKU: ${product.sku} | Quantity: ${product.quantity}'),
+                onTap: () {
+                  _editProduct(product);
+                },
+              );
+            },
+          ),
+        ),
+      ],
+    );
+  }
+
+  void _editProduct(Product product) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => EditProductPage(product: product),
+      ),
+    ).then((_) {
+      // Refresh the product list after editing
+      _loadProducts();
+    });
   }
 
   void _showMenuContainer(BuildContext context) {
@@ -230,13 +311,18 @@ class _ProductsState extends State<Products> {
             ),
           ],
         ),
-        body: buildEmptyMessage(context),
+        body: _productList.isNotEmpty
+            ? _buildProductList(context)
+            : buildEmptyMessage(context),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const AddProductPage()),
-            );
+            ).then((_) {
+              // Refresh the product list after adding
+              _loadProducts();
+            });
           },
           backgroundColor: const Color.fromARGB(255, 167, 222, 248),
           child: const Icon(

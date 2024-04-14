@@ -50,7 +50,7 @@ class DatabaseHelper {
       final String path = join(await getDatabasesPath(), 'kuza.db');
       final Database database = await openDatabase(
         path,
-        version: 3,
+        version: 4, // Increment the version
         onCreate: _createDb,
         onUpgrade: _upgradeDb,
       );
@@ -149,10 +149,15 @@ class DatabaseHelper {
   // Query all products from the products table
   Future<List<Product>> getProducts() async {
     final Database? db = await database;
-    final List<Map<String, dynamic>> maps = await db!.query(productTableName);
-    return List.generate(maps.length, (i) {
-      return Product.fromMap(maps[i]);
-    });
+    try {
+      final List<Map<String, dynamic>> maps = await db!.query(productTableName);
+      return List.generate(maps.length, (i) {
+        return Product.fromMap(maps[i]);
+      });
+    } catch (e) {
+      print('Error getting products: $e');
+      return [];
+    }
   }
 
   // Update a product in the products table
