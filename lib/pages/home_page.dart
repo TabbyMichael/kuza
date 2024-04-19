@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kuza/business/Customers/customers.dart';
 import 'package:kuza/business/Suppliers/suppliers.dart';
+import 'package:kuza/business/Other%20Incomes/other_incomes.dart';
 import 'package:kuza/pages/notification.dart';
 import 'package:kuza/pages/widgets/navigation_drawer.dart';
 import 'package:kuza/business/Inventory/products.dart';
@@ -8,7 +9,6 @@ import 'package:kuza/business/Expenses/screens/category_screen.dart';
 import 'package:kuza/business/Point%20of%20sale%20(POS)/sales.dart';
 import 'package:kuza/business/stores.dart';
 import 'package:kuza/business/Dashboard/reports.dart';
-import 'package:kuza/business/other_incomes.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
         break;
       case 'Other Income':
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => OtherIncome()));
+            .push(MaterialPageRoute(builder: (context) => OtherIncomesPage()));
         break;
       default:
         Navigator.of(context)

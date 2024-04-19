@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:kuza/models/other_incomes.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:kuza/models/customers.dart';
@@ -34,6 +35,12 @@ class DatabaseHelper {
   final String columnContactPerson = 'contactPerson';
   final String columnContactNoSupplier = 'contactNo';
   final String columnEmailAddressSupplier = 'emailAddress';
+
+  // Table name for Other Incomes
+  final String otherIncomeTableName = 'other_incomes';
+  final String columnDescription = 'description';
+  final String columnAmount = 'amount';
+  final String columnDateIncome = 'date';
 
   // Singleton constructor
   factory DatabaseHelper() {
@@ -103,6 +110,16 @@ class DatabaseHelper {
       $columnContactPerson TEXT,
       $columnContactNoSupplier TEXT,
       $columnEmailAddressSupplier TEXT
+      )
+    ''');
+
+    // Create the other incomes table
+    await db.execute('''
+    CREATE TABLE $otherIncomeTableName (
+      $columnId INTEGER PRIMARY KEY AUTOINCREMENT,
+      $columnDescription TEXT,
+      $columnAmount REAL,
+      $columnDateIncome TEXT
       )
     ''');
   }
@@ -246,6 +263,50 @@ class DatabaseHelper {
     final Database? db = await database;
     final int result = await db!.delete(
       supplierTableName,
+      where: '$columnId = ?',
+      whereArgs: [id],
+    );
+    return result;
+  }
+
+  // Insert an other income into the other incomes table
+  Future<int> insertOtherIncome(OtherIncome income) async {
+    final Database? db = await database;
+    final int result = await db!.insert(
+      otherIncomeTableName,
+      income.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
+    return result;
+  }
+
+  // Query all other incomes from the other incomes table
+  Future<List<OtherIncome>> getOtherIncomes() async {
+    final Database? db = await database;
+    final List<Map<String, dynamic>> maps =
+        await db!.query(otherIncomeTableName);
+    return List.generate(maps.length, (i) {
+      return OtherIncome.fromMap(maps[i]);
+    });
+  }
+
+  // Update an other income in the other incomes table
+  Future<int> updateOtherIncome(OtherIncome income) async {
+    final Database? db = await database;
+    final int result = await db!.update(
+      otherIncomeTableName,
+      income.toMap(),
+      where: '$columnId = ?',
+      whereArgs: [income.id],
+    );
+    return result;
+  }
+
+  // Delete an other income from the other incomes table
+  Future<int> deleteOtherIncome(int id) async {
+    final Database? db = await database;
+    final int result = await db!.delete(
+      otherIncomeTableName,
       where: '$columnId = ?',
       whereArgs: [id],
     );
