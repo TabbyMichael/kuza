@@ -213,7 +213,7 @@ class UserPage extends StatelessWidget {
               ),
               Icon(
                 icon,
-                color: Color.fromARGB(255, 167, 222, 248),
+                color: const Color.fromARGB(255, 167, 222, 248),
                 size: 36.0,
               ),
               SizedBox(

@@ -6,7 +6,7 @@ import 'package:kuza/models/products.dart';
 import 'package:kuza/pages/home_page.dart';
 
 class ProductsPage extends StatefulWidget {
-  ProductsPage({Key? key}) : super(key: key);
+  const ProductsPage({super.key});
 
   @override
   _ProductsPageState createState() => _ProductsPageState();
@@ -14,7 +14,7 @@ class ProductsPage extends StatefulWidget {
 
 class _ProductsPageState extends State<ProductsPage> {
   final DatabaseHelper dbHelper = DatabaseHelper();
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   late List<Product> _productList = [];
   late List<Product> _allProducts = [];
 
@@ -56,7 +56,7 @@ class _ProductsPageState extends State<ProductsPage> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Delete'),
+          title: const Text('Confirm Delete'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -66,13 +66,13 @@ class _ProductsPageState extends State<ProductsPage> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Delete'),
+              child: const Text('Delete'),
               onPressed: () async {
                 _deleteProduct(product);
                 Navigator.of(context).pop();
@@ -108,7 +108,7 @@ class _ProductsPageState extends State<ProductsPage> {
             itemBuilder: (BuildContext context, int index) {
               Product product = _productList[index];
               return Card(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                   side: BorderSide(
@@ -121,7 +121,7 @@ class _ProductsPageState extends State<ProductsPage> {
                   subtitle: Text(
                       'SKU: ${product.sku} | Quantity: ${product.quantity}'),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete, color: Colors.black),
+                    icon: const Icon(Icons.delete, color: Colors.black),
                     onPressed: () {
                       _confirmDeleteProduct(product); // Removed await here
                     },

@@ -6,7 +6,7 @@ import 'package:kuza/pages/home_page.dart';
 class EditSupplierPage extends StatefulWidget {
   final Supplier supplier;
 
-  const EditSupplierPage({Key? key, required this.supplier}) : super(key: key);
+  const EditSupplierPage({super.key, required this.supplier});
 
   @override
   _EditSupplierPageState createState() => _EditSupplierPageState();
@@ -48,7 +48,7 @@ class _EditSupplierPageState extends State<EditSupplierPage> {
             ),
           ),
           centerTitle: true,
-          backgroundColor: Color.fromARGB(255, 167, 222, 248),
+          backgroundColor: const Color.fromARGB(255, 167, 222, 248),
           leading: GestureDetector(
             onTap: () {
               Navigator.of(context).pushReplacement(MaterialPageRoute(

@@ -3,6 +3,8 @@ import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/customers.dart';
 
 class CustomerSelectionPage extends StatefulWidget {
+  const CustomerSelectionPage({super.key});
+
   @override
   _CustomerSelectionPageState createState() => _CustomerSelectionPageState();
 }

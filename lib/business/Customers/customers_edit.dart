@@ -6,7 +6,7 @@ import 'package:kuza/models/customers.dart'; // Import package for date formatti
 class EditCustomerPage extends StatefulWidget {
   final Customer customer;
 
-  EditCustomerPage({required this.customer});
+  const EditCustomerPage({super.key, required this.customer});
 
   @override
   _EditCustomerPageState createState() => _EditCustomerPageState();

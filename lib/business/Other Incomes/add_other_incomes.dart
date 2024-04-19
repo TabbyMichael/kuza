@@ -4,7 +4,7 @@ import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/other_incomes.dart'; // Import package for date formatting
 
 class AddOtherIncomePage extends StatefulWidget {
-  const AddOtherIncomePage({Key? key}) : super(key: key);
+  const AddOtherIncomePage({super.key});
 
   @override
   _AddOtherIncomePageState createState() => _AddOtherIncomePageState();

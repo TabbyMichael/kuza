@@ -152,7 +152,7 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'kuza',
           style: TextStyle(
             fontSize: 25,
@@ -161,7 +161,7 @@ class LoginPage extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 167, 222, 248),
+        backgroundColor: const Color.fromARGB(255, 167, 222, 248),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_rounded),
           onPressed: () {

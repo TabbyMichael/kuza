@@ -44,9 +44,7 @@ class DatabaseHelper {
 
   // Singleton constructor
   factory DatabaseHelper() {
-    if (_databaseHelper == null) {
-      _databaseHelper = DatabaseHelper._createInstance();
-    }
+    _databaseHelper ??= DatabaseHelper._createInstance();
     return _databaseHelper!;
   }
 
@@ -54,9 +52,7 @@ class DatabaseHelper {
 
   // Get a reference to the database and create it if necessary
   Future<Database?> get database async {
-    if (_database == null) {
-      _database = await initializeDatabase();
-    }
+    _database ??= await initializeDatabase();
     return _database;
   }
 
@@ -73,7 +69,7 @@ class DatabaseHelper {
       return database;
     } catch (e) {
       print('Error initializing database: $e');
-      throw e; // Rethrow the exception to propagate it further
+      rethrow; // Rethrow the exception to propagate it further
     }
   }
 

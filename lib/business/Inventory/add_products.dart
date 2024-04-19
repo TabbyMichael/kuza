@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/products.dart'; // Import package for date formatting
 
 class AddProductPage extends StatefulWidget {
-  const AddProductPage({Key? key}) : super(key: key);
+  const AddProductPage({super.key});
 
   @override
   _AddProductPageState createState() => _AddProductPageState();

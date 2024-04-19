@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:kuza/business/Other%20Incomes/add_other_incomes.dart';
 import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/other_incomes.dart';
 
 class OtherIncomesPage extends StatefulWidget {
+  const OtherIncomesPage({super.key});
+
   @override
   _OtherIncomesPageState createState() => _OtherIncomesPageState();
 }
 
 class _OtherIncomesPageState extends State<OtherIncomesPage> {
   final DatabaseHelper dbHelper = DatabaseHelper();
-  TextEditingController _descriptionController = TextEditingController();
-  TextEditingController _amountController = TextEditingController();
-  TextEditingController _dateController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
   late List<OtherIncome> _incomeList = [];
   late List<OtherIncome> _allIncomes = [];
 
@@ -55,7 +56,7 @@ class _OtherIncomesPageState extends State<OtherIncomesPage> {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Delete'),
+          title: const Text('Confirm Delete'),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -65,13 +66,13 @@ class _OtherIncomesPageState extends State<OtherIncomesPage> {
           ),
           actions: <Widget>[
             TextButton(
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('Delete'),
+              child: const Text('Delete'),
               onPressed: () async {
                 _deleteIncome(income);
                 Navigator.of(context).pop();
@@ -106,7 +107,7 @@ class _OtherIncomesPageState extends State<OtherIncomesPage> {
             itemBuilder: (BuildContext context, int index) {
               OtherIncome income = _incomeList[index];
               return Card(
-                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),
                   side: BorderSide(
@@ -119,7 +120,7 @@ class _OtherIncomesPageState extends State<OtherIncomesPage> {
                   subtitle:
                       Text('Amount: ${income.amount} | Date: ${income.date}'),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete, color: Colors.black),
+                    icon: const Icon(Icons.delete, color: Colors.black),
                     onPressed: () {
                       _confirmDeleteIncome(income);
                     },
