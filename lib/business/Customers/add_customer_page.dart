@@ -4,7 +4,7 @@ import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/customers.dart'; // Import package for date formatting
 
 class AddCustomerPage extends StatefulWidget {
-  const AddCustomerPage({Key? key}) : super(key: key);
+  const AddCustomerPage({super.key});
 
   @override
   _AddCustomerPageState createState() => _AddCustomerPageState();

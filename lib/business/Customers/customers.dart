@@ -6,7 +6,7 @@ import 'package:kuza/data/database_helper.dart';
 import 'package:kuza/models/customers.dart';
 
 class Customers extends StatefulWidget {
-  const Customers({Key? key}) : super(key: key);
+  const Customers({super.key});
 
   @override
   _CustomersState createState() => _CustomersState();
@@ -101,7 +101,7 @@ class _CustomersState extends State<Customers> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Customers'),
-        backgroundColor: Color.fromARGB(255, 167, 222, 248),
+        backgroundColor: const Color.fromARGB(255, 167, 222, 248),
         centerTitle: true,
         actions: [
           IconButton(
@@ -110,7 +110,7 @@ class _CustomersState extends State<Customers> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => CustomerSelectionPage()),
+                    builder: (context) => const CustomerSelectionPage()),
               );
             },
             icon: const Icon(Icons.menu),

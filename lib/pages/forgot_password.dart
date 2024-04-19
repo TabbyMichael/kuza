@@ -16,7 +16,7 @@ class ForgotPassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Kuza',
           style: TextStyle(
             fontSize: 25,
@@ -25,7 +25,7 @@ class ForgotPassword extends StatelessWidget {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 167, 222, 248),
+        backgroundColor: const Color.fromARGB(255, 167, 222, 248),
       ),
       body: SafeArea(
         child: Center(

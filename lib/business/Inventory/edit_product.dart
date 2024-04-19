@@ -5,7 +5,7 @@ import 'package:kuza/models/products.dart'; // Import package for date formattin
 class EditProductPage extends StatefulWidget {
   final Product product;
 
-  const EditProductPage({Key? key, required this.product}) : super(key: key);
+  const EditProductPage({super.key, required this.product});
 
   @override
   _EditProductPageState createState() => _EditProductPageState();

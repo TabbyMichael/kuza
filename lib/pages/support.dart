@@ -25,7 +25,7 @@ class _SupportState extends State<Support> {
           ),
         ),
         centerTitle: true,
-        backgroundColor: Color.fromARGB(255, 167, 222, 248),
+        backgroundColor: const Color.fromARGB(255, 167, 222, 248),
         leading: GestureDetector(
           onTap: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -198,7 +198,7 @@ class _SupportState extends State<Support> {
               print('Form is valid. Submitting data...');
             }
           },
-          backgroundColor: Color.fromARGB(255, 167, 222, 248),
+          backgroundColor: const Color.fromARGB(255, 167, 222, 248),
           child: const Text(
             "Send",
             style: TextStyle(

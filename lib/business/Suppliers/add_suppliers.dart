@@ -4,7 +4,7 @@ import 'package:kuza/models/suppliers.dart';
 import 'package:kuza/pages/home_page.dart';
 
 class AddSupplierPage extends StatefulWidget {
-  const AddSupplierPage({Key? key}) : super(key: key);
+  const AddSupplierPage({super.key});
 
   @override
   _AddSupplierPageState createState() => _AddSupplierPageState();
