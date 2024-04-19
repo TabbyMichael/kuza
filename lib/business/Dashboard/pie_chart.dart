@@ -78,7 +78,7 @@ class PieChart2State extends State<PieChartSample2> {
                 height: 4,
               ),
               Indicator(
-                color: Colors.yellow,
+                color: Colors.red,
                 text: 'Check',
                 isSquare: true,
               ),
@@ -98,8 +98,8 @@ class PieChart2State extends State<PieChartSample2> {
   List<PieChartSectionData> showingSections() {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
-      final fontSize = isTouched ? 25.0 : 16.0;
-      final radius = isTouched ? 60.0 : 50.0;
+      final fontSize = isTouched ? 25.0 : 26.0;
+      final radius = isTouched ? 150.0 : 150.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
       switch (i) {
         case 0:
@@ -143,7 +143,7 @@ class PieChart2State extends State<PieChartSample2> {
           );
         case 3:
           return PieChartSectionData(
-            color: Colors.yellow,
+            color: Colors.red,
             value: 15,
             title: '15%',
             radius: radius,
@@ -178,7 +178,7 @@ class Indicator extends StatelessWidget {
     return Row(
       children: [
         Container(
-          width: isSquare ? 16 : 20,
+          width: isSquare ? 20 : 20,
           height: 16,
           decoration: BoxDecoration(
             shape: isSquare ? BoxShape.rectangle : BoxShape.circle,
