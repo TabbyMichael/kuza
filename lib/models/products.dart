@@ -5,6 +5,7 @@ class Product {
   final String sku;
   final String barcode;
   final double sellingPrice;
+  final String? image; // Added this line
 
   Product({
     this.id,
@@ -13,6 +14,7 @@ class Product {
     required this.sku,
     required this.barcode,
     required this.sellingPrice,
+    this.image, // Added this line
   });
 
   Map<String, dynamic> toMap() {
@@ -23,6 +25,7 @@ class Product {
       'sku': sku,
       'barcode': barcode,
       'sellingPrice': sellingPrice,
+      'image': image, // Added this line
     };
   }
 
@@ -34,6 +37,7 @@ class Product {
       sku: map['sku'],
       barcode: map['barcode'],
       sellingPrice: map['sellingPrice'],
+      image: map['image'], // Added this line
     );
   }
 }
