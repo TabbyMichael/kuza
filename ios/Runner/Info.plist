@@ -58,5 +58,14 @@
 			<string>UIInterfaceOrientationLandscapeLeft</string>
 			<string>UIInterfaceOrientationLandscapeRight</string>
 		</array>
+
+		<!-- Image Picker permissions -->
+		<key>NSPhotoLibraryUsageDescription</key>
+		<string>Used to pick an image from gallery</string>
+		<key>NSCameraUsageDescription</key>
+		<string>Used to take photos</string>
+		<key>NSMicrophoneUsageDescription</key>
+		<string>Used to record videos</string>
+
 	</dict>
 </plist>

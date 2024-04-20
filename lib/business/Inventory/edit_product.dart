@@ -1,11 +1,13 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:kuza/data/database_helper.dart';
-import 'package:kuza/models/products.dart'; // Import package for date formatting
+import 'package:kuza/models/products.dart';
 
 class EditProductPage extends StatefulWidget {
   final Product product;
 
-  const EditProductPage({super.key, required this.product});
+  const EditProductPage({Key? key, required this.product}) : super(key: key);
 
   @override
   _EditProductPageState createState() => _EditProductPageState();
@@ -17,8 +19,10 @@ class _EditProductPageState extends State<EditProductPage> {
   late TextEditingController _skuController;
   late TextEditingController _barcodeController;
   late TextEditingController _sellingPriceController;
+  late File? _image;
+  final ImagePicker _picker = ImagePicker();
   late DatabaseHelper _databaseHelper;
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>(); // Form key
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -31,6 +35,7 @@ class _EditProductPageState extends State<EditProductPage> {
     _barcodeController = TextEditingController(text: widget.product.barcode);
     _sellingPriceController =
         TextEditingController(text: widget.product.sellingPrice.toString());
+    _image = widget.product.image != null ? File(widget.product.image!) : null;
     _databaseHelper = DatabaseHelper();
   }
 
@@ -43,20 +48,41 @@ class _EditProductPageState extends State<EditProductPage> {
         sku: _skuController.text,
         barcode: _barcodeController.text,
         sellingPrice: double.parse(_sellingPriceController.text),
+        image: _image?.path,
       );
 
       try {
-        // Update the product in the database
         await _databaseHelper.updateProduct(updatedProduct);
-
-        // Navigate back to the previous screen
         Navigator.pop(context);
       } catch (e) {
-        // Handle database update error
         print('Error updating product: $e');
-        // Optionally, display an error message to the user
-        // Or perform other error handling actions
       }
+    }
+  }
+
+  Future<void> _getImage() async {
+    try {
+      final pickedFile = await _picker.pickImage(
+        source: ImageSource.gallery,
+        imageQuality: 50,
+        maxWidth: 800,
+        maxHeight: 600,
+      );
+      setState(() {
+        if (pickedFile != null) {
+          _image = File(pickedFile.path);
+        } else {
+          print('No image selected.');
+        }
+      });
+    } catch (e) {
+      print('Error picking image: $e');
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error picking image: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 
@@ -71,10 +97,38 @@ class _EditProductPageState extends State<EditProductPage> {
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Form(
-            key: _formKey, // Assign form key
+            key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                GestureDetector(
+                  onTap: _getImage,
+                  child: _image != null
+                      ? Image.file(
+                          _image!,
+                          height: 150,
+                          width: 150,
+                          fit: BoxFit.cover,
+                        )
+                      : widget.product.image != null
+                          ? Image.file(
+                              File(widget.product.image!),
+                              height: 150,
+                              width: 150,
+                              fit: BoxFit.cover,
+                            )
+                          : Container(
+                              height: 150,
+                              width: 150,
+                              color: Colors.grey[200],
+                              child: Icon(
+                                Icons.add_photo_alternate,
+                                size: 50,
+                                color: Colors.grey[800],
+                              ),
+                            ),
+                ),
+                const SizedBox(height: 16.0),
                 const Text(
                   'Product Name',
                   style: TextStyle(

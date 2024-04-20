@@ -15,22 +15,23 @@ class DatabaseHelper {
   final String columnId = 'id';
 
   // Table name for Customers
-  final String customerTableName = 'customers'; // Table name for customers
+  final String customerTableName = 'customers';
   final String columnName = 'name';
   final String columnContactNo = 'contactNo';
   final String columnEmailAddress = 'emailAddress';
-  final String columnDate = 'date'; // Added column for date
+  final String columnDate = 'date';
 
   // Table name for Products
-  final String productTableName = 'products'; // Table name for products
+  final String productTableName = 'products';
   final String columnProductName = 'productName';
   final String columnQuantity = 'quantity';
   final String columnSku = 'sku';
   final String columnBarcode = 'barcode';
   final String columnSellingPrice = 'sellingPrice';
+  final String columnImage = 'image'; // Add this line for the image
 
   // Table name for Suppliers
-  final String supplierTableName = 'suppliers'; // Table name for suppliers
+  final String supplierTableName = 'suppliers';
   final String columnSupplierName = 'supplierName';
   final String columnContactPerson = 'contactPerson';
   final String columnContactNoSupplier = 'contactNo';
@@ -62,7 +63,7 @@ class DatabaseHelper {
       final String path = join(await getDatabasesPath(), 'kuza.db');
       final Database database = await openDatabase(
         path,
-        version: 5, // Increment the version
+        version: 6, // Increment the version
         onCreate: _createDb,
         onUpgrade: _upgradeDb,
       );
@@ -94,7 +95,8 @@ class DatabaseHelper {
       $columnQuantity INTEGER,
       $columnSku TEXT,
       $columnBarcode TEXT,
-      $columnSellingPrice REAL
+      $columnSellingPrice REAL,
+      $columnImage TEXT
       )
     ''');
 
