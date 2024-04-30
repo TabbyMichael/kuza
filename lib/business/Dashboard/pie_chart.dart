@@ -43,7 +43,7 @@ class PieChart2State extends State<PieChartSample2> {
                     show: false,
                   ),
                   sectionsSpace: 0,
-                  centerSpaceRadius: 40,
+                  centerSpaceRadius: 30,
                   sections: showingSections(),
                 ),
               ),
@@ -99,7 +99,7 @@ class PieChart2State extends State<PieChartSample2> {
     return List.generate(4, (i) {
       final isTouched = i == touchedIndex;
       final fontSize = isTouched ? 25.0 : 26.0;
-      final radius = isTouched ? 150.0 : 150.0;
+      final radius = isTouched ? 150.0 : 100.0;
       const shadows = [Shadow(color: Colors.black, blurRadius: 2)];
       switch (i) {
         case 0:
