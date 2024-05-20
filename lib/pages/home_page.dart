@@ -48,8 +48,8 @@ class HomePage extends StatelessWidget {
             .push(MaterialPageRoute(builder: (context) => const Sales()));
         break;
       case 'Products':
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const ProductsPage()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const ProductsPage()));
         break;
       case 'Expenses':
         Navigator.of(context).push(
@@ -72,8 +72,8 @@ class HomePage extends StatelessWidget {
             .push(MaterialPageRoute(builder: (context) => const Dashboard()));
         break;
       case 'Other Income':
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => const OtherIncomesPage()));
+        Navigator.of(context).push(
+            MaterialPageRoute(builder: (context) => const OtherIncomesPage()));
         break;
       default:
         Navigator.of(context)
@@ -135,7 +135,7 @@ class HomePage extends StatelessWidget {
             ),
             onPressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => const NotificationsPage(),
+                builder: (context) => NotificationsPage(),
               ));
             },
           ),
