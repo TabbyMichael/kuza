@@ -1,4 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:kuza/pages/Settings/Pin_setup_page.dart';
+import 'package:kuza/pages/Settings/SMS_notifications_page.dart';
+import 'package:kuza/pages/Settings/account_privacy_page.dart';
+import 'package:kuza/pages/Settings/change_password_page.dart';
+import 'package:kuza/pages/Settings/email_notifications_page.dart';
+import 'package:kuza/pages/Settings/login_activity_page.dart';
+import 'package:kuza/pages/Settings/manage_connected_accounts_page.dart';
+import 'package:kuza/pages/Settings/push_notifications_page.dart';
+import 'package:kuza/pages/Settings/two-factor_authentication_page.dart';
 import 'package:kuza/pages/home_page.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -44,9 +53,10 @@ class SettingsPage extends StatelessWidget {
                     'Account Privacy',
                   ],
                   [
-                    _handleSubsectionTap,
-                    _handleSubsectionTap,
-                    _handleSubsectionTap,
+                    () => _navigateToPage(context, const ChangePasswordPage()),
+                    () => _navigateToPage(
+                        context, const ManageConnectedAccountsPage()),
+                    () => _navigateToPage(context, const AccountPrivacyPage()),
                   ],
                 ),
                 // Security Settings
@@ -59,9 +69,10 @@ class SettingsPage extends StatelessWidget {
                     'Passcode/Pin Setup',
                   ],
                   [
-                    _handleSubsectionTap,
-                    _handleSubsectionTap,
-                    _handleSubsectionTap,
+                    () => _navigateToPage(context, const TwoFactorAuthPage()),
+                    () => _navigateToPage(context, const LoginActivityPage()),
+                    () =>
+                        _navigateToPage(context, const PasscodePinSetupPage()),
                   ],
                 ),
                 // Notification Settings
@@ -74,9 +85,12 @@ class SettingsPage extends StatelessWidget {
                     'SMS Notifications',
                   ],
                   [
-                    _handleSubsectionTap,
-                    _handleSubsectionTap,
-                    _handleSubsectionTap,
+                    () =>
+                        _navigateToPage(context, const PushNotificationsPage()),
+                    () => _navigateToPage(
+                        context, const EmailNotificationsPage()),
+                    () =>
+                        _navigateToPage(context, const SmsNotificationsPage()),
                   ],
                 ),
               ],
@@ -89,11 +103,18 @@ class SettingsPage extends StatelessWidget {
     // Handle Subsection Tap
   }
 
+  static void _navigateToPage(BuildContext context, Widget page) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => page),
+    );
+  }
+
   static Widget _buildSection(
     BuildContext context,
     String title,
     List<String> subsectionTitles,
-    List<void Function(BuildContext)> onTapCallbacks,
+    List<void Function()> onTapCallbacks,
   ) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,7 +123,7 @@ class SettingsPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -113,7 +134,7 @@ class SettingsPage extends StatelessWidget {
             subsectionTitles.length,
             (index) => ListTile(
               title: Text(subsectionTitles[index]),
-              onTap: () => onTapCallbacks[index](context),
+              onTap: onTapCallbacks[index],
             ),
           ),
         ),
