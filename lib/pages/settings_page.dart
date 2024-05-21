@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kuza/pages/home_page.dart';
 
 class SettingsPage extends StatelessWidget {
-  const SettingsPage({super.key});
+  const SettingsPage({Key? key});
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -29,5 +29,96 @@ class SettingsPage extends StatelessWidget {
             ), // Use the back arrow icon
           ),
         ),
+        body: Padding(
+          padding: const EdgeInsets.only(top: 26.0),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                // Account Settings
+                _buildSection(
+                  context,
+                  'Account Settings',
+                  [
+                    'Change Password',
+                    'Manage Connected Accounts',
+                    'Account Privacy',
+                  ],
+                  [
+                    _handleSubsectionTap,
+                    _handleSubsectionTap,
+                    _handleSubsectionTap,
+                  ],
+                ),
+                // Security Settings
+                _buildSection(
+                  context,
+                  'Security Settings',
+                  [
+                    'Two-Factor Authentication (2FA)',
+                    'Login Activity',
+                    'Passcode/Pin Setup',
+                  ],
+                  [
+                    _handleSubsectionTap,
+                    _handleSubsectionTap,
+                    _handleSubsectionTap,
+                  ],
+                ),
+                // Notification Settings
+                _buildSection(
+                  context,
+                  'Notification Settings',
+                  [
+                    'Push Notifications',
+                    'Email Notifications',
+                    'SMS Notifications',
+                  ],
+                  [
+                    _handleSubsectionTap,
+                    _handleSubsectionTap,
+                    _handleSubsectionTap,
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ),
       );
+
+  static void _handleSubsectionTap(BuildContext context) {
+    // Handle Subsection Tap
+  }
+
+  static Widget _buildSection(
+    BuildContext context,
+    String title,
+    List<String> subsectionTitles,
+    List<void Function(BuildContext)> onTapCallbacks,
+  ) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Text(
+            title,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Column(
+          children: List.generate(
+            subsectionTitles.length,
+            (index) => ListTile(
+              title: Text(subsectionTitles[index]),
+              onTap: () => onTapCallbacks[index](context),
+            ),
+          ),
+        ),
+        const SizedBox(height: 16.0),
+      ],
+    );
+  }
 }
