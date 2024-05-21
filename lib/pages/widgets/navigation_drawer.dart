@@ -4,7 +4,7 @@ import 'package:kuza/pages/home_page.dart';
 import 'package:kuza/pages/language.dart';
 import 'package:kuza/pages/log_out.dart';
 import 'package:kuza/pages/profile.dart';
-import 'package:kuza/pages/settings_page.dart';
+import 'package:kuza/pages/Settings/settings_page.dart';
 import 'package:kuza/pages/support.dart';
 import 'package:kuza/pages/themes.dart';
 
