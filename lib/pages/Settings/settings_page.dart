@@ -71,7 +71,7 @@ class SettingsPage extends StatelessWidget {
                   [
                     () => _navigateToPage(context, TwoFactorAuthPage()),
                     () => _navigateToPage(context, LoginActivityPage()),
-                    () => _navigateToPage(context, PasscodePinSetupPage()),
+                    () => _navigateToPage(context, PinSetupPage()),
                   ],
                 ),
                 // Notification Settings
@@ -94,10 +94,6 @@ class SettingsPage extends StatelessWidget {
           ),
         ),
       );
-
-  static void _handleSubsectionTap(BuildContext context) {
-    // Handle Subsection Tap
-  }
 
   static void _navigateToPage(BuildContext context, Widget page) {
     Navigator.push(
