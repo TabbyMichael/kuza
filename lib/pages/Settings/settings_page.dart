@@ -53,10 +53,10 @@ class SettingsPage extends StatelessWidget {
                     'Account Privacy',
                   ],
                   [
-                    () => _navigateToPage(context, const ChangePasswordPage()),
-                    () => _navigateToPage(
-                        context, const ManageConnectedAccountsPage()),
-                    () => _navigateToPage(context, const AccountPrivacyPage()),
+                    () => _navigateToPage(context, ChangePasswordPage()),
+                    () =>
+                        _navigateToPage(context, ManageConnectedAccountsPage()),
+                    () => _navigateToPage(context, AccountPrivacyPage()),
                   ],
                 ),
                 // Security Settings
@@ -69,10 +69,9 @@ class SettingsPage extends StatelessWidget {
                     'Passcode/Pin Setup',
                   ],
                   [
-                    () => _navigateToPage(context, const TwoFactorAuthPage()),
-                    () => _navigateToPage(context, const LoginActivityPage()),
-                    () =>
-                        _navigateToPage(context, const PasscodePinSetupPage()),
+                    () => _navigateToPage(context, TwoFactorAuthPage()),
+                    () => _navigateToPage(context, LoginActivityPage()),
+                    () => _navigateToPage(context, PasscodePinSetupPage()),
                   ],
                 ),
                 // Notification Settings
@@ -85,12 +84,9 @@ class SettingsPage extends StatelessWidget {
                     'SMS Notifications',
                   ],
                   [
-                    () =>
-                        _navigateToPage(context, const PushNotificationsPage()),
-                    () => _navigateToPage(
-                        context, const EmailNotificationsPage()),
-                    () =>
-                        _navigateToPage(context, const SmsNotificationsPage()),
+                    () => _navigateToPage(context, PushNotificationsPage()),
+                    () => _navigateToPage(context, EmailNotificationsPage()),
+                    () => _navigateToPage(context, SmsNotificationsPage()),
                   ],
                 ),
               ],
