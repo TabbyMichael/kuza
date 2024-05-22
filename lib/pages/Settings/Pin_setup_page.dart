@@ -1,16 +1,42 @@
 import 'package:flutter/material.dart';
 
 class PasscodePinSetupPage extends StatelessWidget {
-  const PasscodePinSetupPage({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Passcode/Pin Setup'),
+        title: const Text('Passcode/Pin Setup'),
       ),
-      body: Center(
-        child: Text('This is the Passcode/Pin Setup Page'),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Enter Passcode/PIN',
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true,
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 16),
+            const TextField(
+              decoration: InputDecoration(
+                labelText: 'Confirm Passcode/PIN',
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true,
+              keyboardType: TextInputType.number,
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Implement passcode/PIN setup functionality
+              },
+              child: const Text('Set Passcode/PIN'),
+            ),
+          ],
+        ),
       ),
     );
   }
