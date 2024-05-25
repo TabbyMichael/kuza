@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 class BarChartSample2 extends StatefulWidget {
   const BarChartSample2({super.key});
   final Color leftBarColor = Colors.lightBlueAccent;
-  final Color rightBarColor =
-      const Color.fromARGB(255, 220, 219, 219); // or any other color you prefer
+  final Color rightBarColor = const Color.fromARGB(255, 220, 219, 219);
   final Color avgColor = Colors.orange;
+
   @override
   State<StatefulWidget> createState() => BarChartSample2State();
 }
@@ -80,10 +80,22 @@ class BarChartSample2State extends State<BarChartSample2> {
                   maxY: 20,
                   barTouchData: BarTouchData(
                     touchTooltipData: BarTouchTooltipData(
-                      tooltipBgColor: Colors.grey,
-                      getTooltipItem: (a, b, c, d) => null,
+                      tooltipPadding: const EdgeInsets.all(8),
+                      tooltipMargin: 8,
+                      fitInsideVertically: true,
+                      fitInsideHorizontally: true,
+                      getTooltipItem: (group, groupIndex, rod, rodIndex) {
+                        return BarTooltipItem(
+                          rod.toY.toString(),
+                          const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        );
+                      },
                     ),
-                    touchCallback: (FlTouchEvent event, response) {
+                    touchCallback:
+                        (FlTouchEvent event, BarTouchResponse? response) {
                       if (response == null || response.spot == null) {
                         setState(() {
                           touchedGroupIndex = -1;
@@ -203,7 +215,7 @@ class BarChartSample2State extends State<BarChartSample2> {
 
     return SideTitleWidget(
       axisSide: meta.axisSide,
-      space: 16, //margin top
+      space: 16, // margin top
       child: text,
     );
   }

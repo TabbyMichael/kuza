@@ -37,14 +37,14 @@ class _ExpenseChartState extends State<ExpenseChart> {
             ),
           ],
           titlesData: FlTitlesData(
-            topTitles: AxisTitles(
-              drawBehindEverything: true,
+            topTitles: const AxisTitles(
+              drawBelowEverything: true,
             ),
-            leftTitles: AxisTitles(
-              drawBehindEverything: true,
+            leftTitles: const AxisTitles(
+              drawBelowEverything: true,
             ),
-            rightTitles: AxisTitles(
-              drawBehindEverything: true,
+            rightTitles: const AxisTitles(
+              drawBelowEverything: true,
             ),
             bottomTitles: AxisTitles(
               sideTitles: SideTitles(

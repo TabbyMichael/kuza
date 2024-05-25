@@ -33,7 +33,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   firebase_core: ^2.24.2
   flutter_barcode_scanner: ^2.0.0
-  fl_chart: ^0.55.2
+  fl_chart: ^0.68.0
   firebase_auth: ^4.16.0
   google_fonts: ^6.2.1
   provider: ^6.1.2
