@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:kuza/business/Stores/add_stores.dart';
 import 'package:kuza/pages/home_page.dart';
 
 class Stores extends StatelessWidget {
-  const Stores({super.key});
+  const Stores({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -29,9 +30,19 @@ class Stores extends StatelessWidget {
             ), // Use the back arrow icon
           ),
         ),
+        body: const Center(
+          child: Text(
+            'Multi-store Management Page',
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            // Add your action here when the button is clicked
+            // Navigate to the AddStorePage when the FloatingActionButton is clicked
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) =>
+                  const AddStorePage(), // Navigate to the AddStorePage
+            ));
           },
           backgroundColor: Colors.lightBlueAccent,
           child: const Icon(
