@@ -112,17 +112,33 @@ class LoginPage extends StatelessWidget {
         );
       }
 
-      final GoogleSignIn googleSignIn = GoogleSignIn();
+      // Fix 1: Use the correct constructor for GoogleSignIn
+      final GoogleSignIn googleSignIn = GoogleSignIn.instance;
+      // Fix 2: Use the correct method attemptLightweightAuthentication() or authenticate()
       final GoogleSignInAccount? googleSignInAccount =
-          await googleSignIn.signIn();
+          await googleSignIn.initialize().then((_) {
+        return googleSignIn.attemptLightweightAuthentication();
+      });
 
-      if (googleSignInAccount != null) {
+      // If lightweight authentication failed, try full authentication
+      final GoogleSignInAccount? signedInAccount =
+          googleSignInAccount ?? (await googleSignIn.authenticate());
+
+      if (signedInAccount != null) {
         final GoogleSignInAuthentication googleSignInAuthentication =
-            await googleSignInAccount.authentication;
+            signedInAccount.authentication;
+
+        // Get authorization for the required scopes
+        final GoogleSignInClientAuthorization? authorization =
+            await signedInAccount.authorizationClient
+                .authorizationForScopes(['email']);
+
+        // Create credential using idToken from authentication and accessToken from authorization
         final AuthCredential credential = GoogleAuthProvider.credential(
-          accessToken: googleSignInAuthentication.accessToken,
+          accessToken: authorization?.accessToken,
           idToken: googleSignInAuthentication.idToken,
         );
+
         final UserCredential authResult =
             await FirebaseAuth.instance.signInWithCredential(credential);
         final User? user = authResult.user;
