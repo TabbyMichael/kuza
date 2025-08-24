@@ -31,16 +31,16 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.6
-  firebase_core: ^2.24.2
+  firebase_core: ^4.0.0
   flutter_barcode_scanner: ^2.0.0
-  fl_chart: ^0.68.0
-  firebase_auth: ^4.16.0
+  fl_chart: ^1.0.0
+  firebase_auth: ^6.0.1
   google_fonts: ^6.2.1
   provider: ^6.1.2
   sqflite: ^2.3.3
   path: ^1.9.0
-  intl: ^0.19.0
-  google_sign_in: ^6.2.1
+  intl: ^0.20.2
+  google_sign_in: ^7.1.1
   image_picker: ^1.1.0
   country_code_picker: ^3.0.0
   flutter_secure_storage: ^9.2.1
@@ -62,7 +62,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^6.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
